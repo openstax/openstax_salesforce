@@ -8,10 +8,13 @@ OpenStax::Salesforce is a Rails engine used by OpenStax projects to communicate 
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add these line to your application's Gemfile:
 
 ```rb
 gem 'openstax_salesforce'
+
+# ActiveForce fork that supports Ruby >= 2.1 and stubbable stdout
+gem 'active_force', git: 'https://github.com/openstax/active_force', ref: '7caac17'
 ```
 
 And then execute:
@@ -41,8 +44,12 @@ $ rake db:migrate
 Also add OpenStax::Salesforce to your application's routes:
 
 ```rb
-mount OpenStax::Salesforce::Engine => "/salesforce"
+mount OpenStax::Salesforce::Engine, at: "/salesforce"
+OpenStax::Salesforce.set_top_level_routes(self)
 ```
+
+The `set_top_level_routes` should be called at the top level inside `routes.rb`.  It adds oauth callback
+routes at the top level.
 
 And provide a link on your site for administrators to access the engine.
 
