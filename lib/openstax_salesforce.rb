@@ -34,6 +34,7 @@ module OpenStax
       attr_accessor :sandbox_instance_url
       attr_accessor :check_sandbox_instance_url
       attr_accessor :skip_automatic_omniauth_setup
+      attr_accessor :page_heading_proc
 
       def salesforce_client_options
         salesforce_login_site ? { site: salesforce_login_site } : {}

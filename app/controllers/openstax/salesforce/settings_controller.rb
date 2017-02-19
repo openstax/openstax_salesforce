@@ -1,5 +1,5 @@
 module OpenStax::Salesforce
-  class SettingsController < ApplicationController
+  class SettingsController < OpenStax::Salesforce::ApplicationController
     layout OpenStax::Salesforce.configuration.layout
 
     def show

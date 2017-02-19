@@ -1,35 +1,33 @@
 <div class="salesforce-settings">
 
-<h2>Salesforce Integration</h2>
+  <%= page_heading(self, "Salesforce Setup") %>
 
-<h3>API User Setup</h3>
+  <p>When Accounts makes calls to Salesforce's API, it must do so on behalf of a
+    specific Salesforce user.  At any one time, Accounts has information for either
+    zero or one such user.  Use the link below to set the current user that Accounts
+    acts as when calling the Salesforce API.</p>
 
-<p>When Accounts makes calls to Salesforce's API, it must do so on behalf of a
-  specific Salesforce user.  At any one time, Accounts has information for either
-  zero or one such user.  Use the link below to set the current user that Accounts
-  acts as when calling the Salesforce API.</p>
+  <% @user = OpenStax::Salesforce::User.first %>
 
-<% @user = OpenStax::Salesforce::User.first %>
+  <div style="margin: 30px 0px">
+    <p>
+    <% if @user.present? %>
+      The current Salesforce user is <b><%= @user.name || "[Unknown Name]" %></b>.
+    <% else %>
+      There <b>is no</b> Salesforce user currently set.
+    <% end %>
+    </p>
+  </div>
 
-<div style="margin: 30px 0px">
-<p>
-<% if @user.present? %>
-  The current Salesforce user is <b><%= @user.name || "[Unknown Name]" %></b>.
-<% else %>
-  There <b>is no</b> Salesforce user currently set.
-<% end %>
-</p>
-</div>
+  <%= link_to "Set Salesforce User",
+              "/auth/salesforce?redirect_uri=#{main_app.auth_salesforce_callback_url}",
+              id: "sign_in", class: 'btn btn-primary' %>
 
-<%= link_to "Set Salesforce User",
-            "/auth/salesforce?redirect_uri=#{main_app.auth_salesforce_callback_url}",
-            id: "sign_in", class: 'btn btn-primary' %>
+  <%= link_to "Clear Salesforce User",
+              destroy_user_settings_path,
+              class: 'btn btn-danger pull-right',
+              method: :delete %>
 
-<%= link_to "Clear Salesforce User",
-            destroy_user_settings_path,
-            class: 'btn btn-danger pull-right',
-            method: :delete %>
-
-<hr/>
+  <hr/>
 
 </div>

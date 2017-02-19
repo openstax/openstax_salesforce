@@ -39,6 +39,10 @@ OpenStax::Salesforce.configure do |config|
   # uses the instance URL will checks that the URL starts with "cs", which
   # indicates that the instance is a sandbox.
   config.check_sandbox_instance_url = true
+
+  # A way to customize page headings.  Sometimes apps fold the page heading
+  # into the layout in different ways.
+  config.page_heading_proc = ->(view, text) { "<h2>#{text}</h2>".html_safe }
 end
 
 
