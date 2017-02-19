@@ -6,14 +6,14 @@ module OpenStax::Salesforce
     end
 
     def callback
-      SalesforceUser.save_from_omniauth!(env["omniauth.auth"])
-      redirect_to admin_salesforce_path
+      OpenStax::Salesforce::User.save_from_omniauth!(env["omniauth.auth"])
+      redirect_to root_path
     end
 
     def destroy_user
-      SalesforceUser.destroy_all
+      OpenStax::Salesforce::User.destroy_all
       ActiveForce.clear_sfdc_client! # since user is now gone, any client invalid
-      redirect_to admin_salesforce_path
+      redirect_to root_path
     end
 
   end
