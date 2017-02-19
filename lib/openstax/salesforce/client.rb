@@ -6,8 +6,8 @@ module OpenStax::Salesforce
 
       raise(UserMissing, "The Salesforce client was requested but no user is available.") if user.nil?
 
-      client_key = configuration.salesforce_client_key
-      client_secret = configuration.salesforce_client_secret
+      client_key = OpenStax::Salesforce.configuration.salesforce_client_key
+      client_secret = OpenStax::Salesforce.configuration.salesforce_client_secret
 
       raise(IllegalState, "The Salesforce key is missing") if client_key.nil?
       raise(IllegalState, "The Salesforce secret is missing") if client_secret.nil?

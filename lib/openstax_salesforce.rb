@@ -7,6 +7,9 @@ require "openstax/salesforce/active_force"
 require "openstax/salesforce/engine"
 require "openstax/salesforce/user_missing"
 require "openstax/salesforce/client"
+
+require "openstax/salesforce/remote/book"
+require "openstax/salesforce/remote/school"
 require "openstax/salesforce/remote/contact"
 require "openstax/salesforce/remote/lead"
 

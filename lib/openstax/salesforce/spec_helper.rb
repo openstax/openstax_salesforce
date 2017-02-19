@@ -65,14 +65,15 @@ module OpenStax::Salesforce
     def self.load_salesforce_user
       clear_salesforce_user
 
+      config = OpenStax::Salesforce.configuration
       sf_user = OpenStax::Salesforce::User.new
 
       sf_user.name = "some name"
       sf_user.uid = "whatever"
-      sf_user.oauth_token =   configuration.sandbox_oauth_token
-      sf_user.refresh_token = configuration.sandbox_refresh_token
-      sf_user.instance_url =  configuration.sandbox_instance_url.tap do |url|
-        if configuration.check_sandbox_instance_url && !url.match(/\/\/cs/)
+      sf_user.oauth_token =   config.sandbox_oauth_token
+      sf_user.refresh_token = config.sandbox_refresh_token
+      sf_user.instance_url =  config.sandbox_instance_url.tap do |url|
+        if config.check_sandbox_instance_url && !url.match(/\/\/cs/)
           raise "Salesforce sandbox instance URL (#{url}) does not have the expected form!"
         end
       end

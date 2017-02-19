@@ -71,6 +71,15 @@ From the gem's main folder, run `bundle install`,
 `bundle exec rake db:migrate` and then
 `bundle exec rake` to run all the specs.
 
+## Specs in Parent App
+
+There's a helper you can include in your parent app's salesforce specs.  It isn't automatically
+required by this engine, so you have to do it manually in your spec:
+
+```ruby
+require 'openstax/salesforce/spec_helper'
+```
+
 ## Contributing
 
 1. Fork it
