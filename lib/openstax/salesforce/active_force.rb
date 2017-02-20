@@ -17,6 +17,7 @@ module ActiveForce
     def clear_sfdc_client!
       self.sfdc_client = nil
     end
+
   end
 
   class SObject
@@ -24,6 +25,10 @@ module ActiveForce
     def save_if_changed
       save if changed?
     end
+
+    # We sometimes mock `query` in specs, and it is helpful to have
+    # access to the original implementation
+    singleton_class.send(:alias_method, :original_query, :query)
   end
 
 end

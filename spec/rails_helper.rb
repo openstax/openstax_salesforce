@@ -6,6 +6,7 @@ require 'rspec/rails'
 require 'factory_girl_rails'
 require 'faker'
 require 'squeel'
+require 'byebug'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 

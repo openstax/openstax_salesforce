@@ -50,6 +50,9 @@ module OpenStax
                    via: [:get, :post]
     end
 
+    def self.ready_for_api_usage?
+      OpenStax::Salesforce::User.any?
+    end
+
   end
 end
-
