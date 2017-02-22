@@ -34,12 +34,13 @@ module OpenStax::Salesforce::SpecHelpers
       end
     end
 
-    def new_lead(email:, status: nil, last_name: nil, school_name: "JP University")
+    def new_lead(email:, status: nil, last_name: nil, source: nil, school_name: "JP University")
       Lead.new(
         email: email,
         status: status,
         last_name: last_name!(last_name),
-        school: school_name
+        school: school_name,
+        source: source
       ).tap do |lead|
         if !lead.save
           raise "Could not save SF lead: #{lead.errors}"
