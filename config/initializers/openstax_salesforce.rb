@@ -7,15 +7,13 @@ OpenStax::Salesforce.configure do |config|
   # Layout to be used for OpenStax::Salesforce's controllers
   config.layout = 'application'
 
-  # Proc called with a controller as self. Returns the current user.
-  config.current_user_proc = -> { nil }
-
-  # Proc called with a user as argument and a controller as self.
+  # Proc called with an argument of the controller where this is called.
   # This proc is called when a user tries to access the engine's controllers.
   # Should raise an exception, render or redirect unless the user is a manager
   # or admin. The default renders 403 Forbidden for all users.
-  # Note: Proc must account for nil users, if current_user_proc returns nil.
-  config.authenticate_admin_proc = ->(user) { head(:forbidden) }
+  config.authenticate_admin_proc = ->(controller) {
+    controller.head(:forbidden)
+  }
 
   # Consumer key and secret for connecting to the Salesforce app
   config.salesforce_client_key = 'put_real_key_value_here'
