@@ -1,6 +1,6 @@
 # OpenStax::Salesforce
 
-[![Gem Version](https://badge.fury.io/rb/openstax_salesforce.svg)](http://badge.fury.io/rb/fine_print)
+[![Gem Version](https://badge.fury.io/rb/openstax_salesforce.svg)](http://badge.fury.io/rb/openstax_salesforce)
 [![Build Status](https://travis-ci.org/openstax/openstax_salesforce.svg?branch=master)](https://travis-ci.org/openstax/openstax_salesforce)
 [![Code Climate](https://codeclimate.com/github/openstax/openstax_salesforce/badges/gpa.svg)](https://codeclimate.com/github/openstax/openstax_salesforce)
 

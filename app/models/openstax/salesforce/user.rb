@@ -8,7 +8,7 @@ module OpenStax::Salesforce
     after_save :ensure_only_one_record
 
     def self.save_from_omniauth!(auth)
-      where(auth.slice(:uid).permit!).first_or_initialize.tap do |user|
+      where(uid: auth[:uid]).first_or_initialize.tap do |user|
         user.uid = auth.uid
         user.name = auth.info.name
         user.oauth_token = auth.credentials.token
@@ -19,7 +19,7 @@ module OpenStax::Salesforce
     end
 
     def ensure_only_one_record
-      self.class.where{id != self.id}.destroy_all
+      self.class.where{id != my{self.id}}.destroy_all
     end
   end
 end

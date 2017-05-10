@@ -8,8 +8,13 @@ require "openstax/salesforce/engine"
 require "openstax/salesforce/user_missing"
 require "openstax/salesforce/client"
 
+require "openstax/salesforce/remote/term_year"
 require "openstax/salesforce/remote/book"
 require "openstax/salesforce/remote/school"
+require "openstax/salesforce/remote/opportunity"
+require "openstax/salesforce/remote/individual_adoption"
+require "openstax/salesforce/remote/class_size"
+require "openstax/salesforce/remote/os_ancillary"
 require "openstax/salesforce/remote/contact"
 require "openstax/salesforce/remote/lead"
 
@@ -27,7 +32,6 @@ module OpenStax
     # See `config/initializers/openstax_salesforce.rb` for documentation on options
     class Configuration
       attr_accessor :layout
-      attr_accessor :current_user_proc
       attr_accessor :authenticate_admin_proc
       attr_accessor :salesforce_client_key
       attr_accessor :salesforce_client_secret

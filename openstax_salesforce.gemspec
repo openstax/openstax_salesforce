@@ -28,5 +28,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "faker"
   s.add_development_dependency "squeel"
   s.add_development_dependency "byebug"
+  s.add_development_dependency "database_cleaner"
 end
 
