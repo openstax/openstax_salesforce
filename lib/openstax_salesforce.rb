@@ -17,6 +17,7 @@ require "openstax/salesforce/remote/class_size"
 require "openstax/salesforce/remote/os_ancillary"
 require "openstax/salesforce/remote/contact"
 require "openstax/salesforce/remote/lead"
+require "openstax/salesforce/remote/tutor_onboarding_a"
 
 module OpenStax
   module Salesforce
@@ -35,7 +36,7 @@ module OpenStax
       attr_accessor :authenticate_admin_proc
       attr_accessor :salesforce_client_key
       attr_accessor :salesforce_client_secret
-      attr_accessor :salesforce_login_site
+      attr_writer   :salesforce_login_site
       attr_accessor :sandbox_oauth_token
       attr_accessor :sandbox_refresh_token
       attr_accessor :sandbox_instance_url
@@ -43,8 +44,16 @@ module OpenStax
       attr_accessor :skip_automatic_omniauth_setup
       attr_accessor :page_heading_proc
 
+      def salesforce_login_site
+        @salesforce_login_site || "https://login.salesforce.com"
+      end
+
       def salesforce_client_options
-        salesforce_login_site ? { site: salesforce_login_site } : {}
+        { site: salesforce_login_site }
+      end
+
+      def salesforce_login_domain
+        Addressable::URI.parse(salesforce_login_site).host
       end
     end
 

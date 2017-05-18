@@ -21,6 +21,10 @@ module ActiveForce
   end
 
   class SObject
+    def self.find_or_initialize_by(conditions)
+      find_by(conditions) || new(conditions)
+    end
+
     # Save that precious SF API call count!
     def save_if_changed
       save if changed?

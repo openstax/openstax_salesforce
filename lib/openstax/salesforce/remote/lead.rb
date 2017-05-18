@@ -16,6 +16,7 @@ module OpenStax::Salesforce::Remote
     field :adoption_status,     from: "Adoption_Status__c"
     field :num_students,        from: "Number_of_Students__c"
     field :os_accounts_id,      from: "OS_Accounts_ID__c"
+    field :accounts_uuid,       from: "accounts_uuid__c"
 
     self.table_name = 'Lead'
   end
