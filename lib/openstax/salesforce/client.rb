@@ -12,7 +12,8 @@ module OpenStax::Salesforce
       raise(IllegalState, "The Salesforce key is missing") if client_key.nil?
       raise(IllegalState, "The Salesforce secret is missing") if client_secret.nil?
 
-      super(oauth_token: user.oauth_token,
+      super(host: OpenStax::Salesforce.configuration.salesforce_login_domain,
+            oauth_token: user.oauth_token,
             refresh_token: user.refresh_token,
             instance_url: user.instance_url,
             client_id: client_key,
