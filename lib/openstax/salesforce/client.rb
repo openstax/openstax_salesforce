@@ -2,7 +2,7 @@ module OpenStax::Salesforce
   class Client < ::Restforce::Data::Client
 
     def initialize
-      user = User.first
+      user = OpenStax::Salesforce::User.first
 
       raise(UserMissing, "The Salesforce client was requested but no user is available.") if user.nil?
 

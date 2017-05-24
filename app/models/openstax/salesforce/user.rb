@@ -21,5 +21,11 @@ module OpenStax::Salesforce
     def ensure_only_one_record
       self.class.where{id != my{self.id}}.destroy_all
     end
+
+    def refresh_oauth_token!
+      OpenStax::Salesforce::Remote::Contact.count
+      valid_token = ActiveForce.sfdc_client.options[:oauth_token]
+      update_attribute(:oauth_token, valid_token) if self.oauth_token != valid_token
+    end
   end
 end
