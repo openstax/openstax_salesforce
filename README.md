@@ -80,6 +80,14 @@ required by this engine, so you have to do it manually in your spec:
 require 'openstax/salesforce/spec_helper'
 ```
 
+If the oauth token in `OpenStax::Salesforce::User.first` expires, you can update it with
+
+```ruby
+OpenStax::Salesforce::User.first.refresh_oauth_token!
+```
+
+and then copy that token into your spec setup.
+
 ## Contributing
 
 1. Fork it
