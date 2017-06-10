@@ -12,6 +12,7 @@ module OpenStax::Salesforce::Remote
     field :spring_start_date,            from: "Spring_Start_Date__c"
     field :adoption_level,               from: "Adoption_Level__c"
     field :description,                  from: "Description__c"
+    field :source,                       from: "Source__c"
 
     # Deprecated
     field :term_year,                    from: "TermYear__c"
