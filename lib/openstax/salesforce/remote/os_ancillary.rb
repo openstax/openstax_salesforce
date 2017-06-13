@@ -25,6 +25,7 @@ module OpenStax::Salesforce::Remote
     field :term,                      from: "Term__c"
     field :base_year,                 from: "Manual_Base_Year__c", as: :int
     field :estimated_enrollment,      from: "Estimated_Enrollment__c", as: :int
+    field :does_cost,                 from: "Paid_Course__c", as: :boolean
     field :opportunity_id,            from: 'Opportunity__c'
     field :individual_adoption_id,    from: "Individual_Adoption__c"
     field :contact_id,                from: "Contact__c"
