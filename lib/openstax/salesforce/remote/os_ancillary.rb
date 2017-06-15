@@ -21,6 +21,8 @@ module OpenStax::Salesforce::Remote
     field :num_students_paid,         from: "Students_Paid__c", as: :int
     field :num_students_comped,       from: "Students_Comped__c", as: :int
     field :num_students_refunded,     from: "Students_Refunded__c", as: :int
+    field :num_students_dropped,      from: "Students_Dropped__c", as: :int
+    field :num_students_with_work,    from: "Students_With_Work__c", as: :int
     field :term_year,                 from: "TermYear__c"
     field :term,                      from: "Term__c"
     field :base_year,                 from: "Manual_Base_Year__c", as: :int
@@ -39,6 +41,8 @@ module OpenStax::Salesforce::Remote
       self.num_students_paid = 0
       self.num_students_comped = 0
       self.num_students_refunded = 0
+      self.num_students_dropped = 0
+      self.num_students_with_work = 0
       self.num_teachers = 0
       self.num_sections = 0
     end
