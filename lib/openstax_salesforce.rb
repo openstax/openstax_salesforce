@@ -18,6 +18,8 @@ require "openstax/salesforce/remote/os_ancillary"
 require "openstax/salesforce/remote/contact"
 require "openstax/salesforce/remote/lead"
 require "openstax/salesforce/remote/tutor_onboarding_a"
+require "openstax/salesforce/remote/campaign"
+require "openstax/salesforce/remote/campaign_member"
 
 module OpenStax
   module Salesforce

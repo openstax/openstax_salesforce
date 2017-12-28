@@ -1,8 +1,8 @@
 module OpenStax::Salesforce::Remote
   class CampaignMember < ActiveForce::SObject
 
-    field :campaign_id,                                       from: "Campaign"
-    field :contact_id,                                        from: "Contact"
+    field :campaign_id,                                       from: "CampaignId"
+    field :contact_id,                                        from: "ContactId"
     field :accounts_uuid,                                     from: "accounts_uuid__c"
 
     field :pardot_reported_contact_id,                        from: "pardot_reported_contact_id__c"
