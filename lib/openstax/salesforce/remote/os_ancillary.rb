@@ -31,6 +31,8 @@ module OpenStax::Salesforce::Remote
     field :opportunity_id,            from: 'Opportunity__c'
     field :individual_adoption_id,    from: "Individual_Adoption__c"
     field :contact_id,                from: "Contact__c"
+    field :campaign_member_id,        from: "Campaign_Member_ID__c"
+    field :latest_adoption_decision,  from: "latest_adoption_decision__c"
 
     belongs_to :opportunity, model: OpenStax::Salesforce::Remote::Opportunity
 

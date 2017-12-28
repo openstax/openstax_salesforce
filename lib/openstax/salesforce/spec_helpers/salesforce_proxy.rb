@@ -61,6 +61,27 @@ module OpenStax::Salesforce::SpecHelpers
       end
     end
 
+    def new_campaign(name: SecureRandom.hex(8))
+      Campaign.new(
+        name: name
+      ).tap do |campaign|
+        if !campaign.save
+          raise "Could not save SF Campaign: #{campaign.errors}"
+        end
+      end
+    end
+
+    def new_campaign_member(contact_id:, campaign_id:)
+      CampaignMember.new(
+        contact_id: contact_id,
+        campaign_id: campaign_id
+      ).tap do |campaign_member|
+        if !campaign_member.save
+          raise "Could not save SF Campaign Member: #{campaign_member.errors}"
+        end
+      end
+    end
+
     def last_name!(input)
       "#{input || Faker::Name.last_name}#{@unique_token if @unique_token.present?}"
     end
