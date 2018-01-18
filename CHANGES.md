@@ -1,3 +1,7 @@
+## 1.2.0
+
+* Added `first_arrived_my_courses_at` field to `CampaignMember`
+
 ## 1.1.0
 
 * https://github.com/openstax/openstax_salesforce/pull/10
