@@ -13,6 +13,7 @@ module OpenStax::Salesforce::Remote
 
     field :arrived_marketing_page_from_pardot_at,             from: "arrived_marketing_page_from_pardot_at__c",    as: :datetime
     field :arrived_marketing_page_not_from_pardot_at,         from: "arrived_marketing_page_not_from_pardot_a__c", as: :datetime
+    field :first_arrived_my_courses_at,                       from: "first_arrived_my_courses_at__c",              as: :datetime
     field :preview_created_at,                                from: "preview_created_at__c",                       as: :datetime
     field :real_course_created_at,                            from: "real_course_created_at__c",                   as: :datetime
     field :like_preview_ask_later_count,                      from: "like_preview_ask_later_count__c",             as: :int
