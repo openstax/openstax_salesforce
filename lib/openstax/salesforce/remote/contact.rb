@@ -12,6 +12,7 @@ module OpenStax::Salesforce::Remote
     field :faculty_verified,             from: "Faculty_Verified__c"
     field :last_modified_at,             from: "LastModifiedDate"
     field :school_id,                    from: "AccountId"
+    field :school_type,                  from: "School_Type__c"
     field :send_faculty_verification_to, from: "SendFacultyVerificationTo__c"
     field :all_emails,                   from: "All_Emails__c"
     field :confirmed_emails,             from: "Confirmed_Emails__c"
