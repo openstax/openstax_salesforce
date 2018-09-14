@@ -33,13 +33,13 @@ module OpenStax::Salesforce::Remote
 
     def reset_stats
       self.num_periods = 0
-      self.num_teachers = 0
+      self.num_students = 0
       self.num_students_comped = 0
       self.num_students_dropped = 0
       self.num_students_paid = 0
       self.num_students_refunded = 0
-      self.num_students = 0
       self.num_students_with_work = 0
+      self.num_teachers = 0
     end
 
     STATUS_APPROVED = "Approved"
