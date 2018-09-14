@@ -48,19 +48,6 @@ module OpenStax::Salesforce::SpecHelpers
       end
     end
 
-    def new_tutor_onboarding_a(first_teacher_contact_id: nil, pardot_reported_contact_id: nil)
-      raise "Not enough arguments given" if first_teacher_contact_id.nil? && pardot_reported_contact_id.nil?
-
-      TutorOnboardingA.new(
-        first_teacher_contact_id: first_teacher_contact_id,
-        pardot_reported_contact_id: pardot_reported_contact_id
-      ).tap do |toa|
-        if !toa.save
-          raise "Could not save SF TOA: #{toa.errors}"
-        end
-      end
-    end
-
     def new_campaign(name: SecureRandom.hex(8))
       Campaign.new(
         name: name
