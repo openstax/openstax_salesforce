@@ -19,7 +19,7 @@ module OpenStax::Salesforce
     end
 
     def ensure_only_one_record
-      self.class.where{id != my{self.id}}.destroy_all
+      self.class.where.not(id: id).destroy_all
     end
 
     def refresh_oauth_token!

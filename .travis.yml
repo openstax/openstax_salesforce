@@ -1,7 +1,6 @@
 sudo: false
 language: ruby
-rvm:
-  - "2.2.3"
+rvm: 2.3.7
 cache: bundler
 bundler_args: --retry=6
 script:

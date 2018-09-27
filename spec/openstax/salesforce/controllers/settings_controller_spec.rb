@@ -18,8 +18,8 @@ RSpec.describe OpenStax::Salesforce::SettingsController, type: :controller do
 
       context 'when there are other SF users' do
         it 'adds a user and removes existing users' do
-          other_user_1 = FactoryGirl.create(:user, do_not_destroy_others: true)
-          other_user_2 = FactoryGirl.create(:user, do_not_destroy_others: true)
+          other_user_1 = FactoryBot.create(:user, do_not_destroy_others: true)
+          other_user_2 = FactoryBot.create(:user, do_not_destroy_others: true)
 
           allow_any_instance_of(described_class)
             .to receive(:env)
@@ -33,7 +33,7 @@ RSpec.describe OpenStax::Salesforce::SettingsController, type: :controller do
 
       context 'when a user with the same uid already exists' do
         it 'reuses that user' do
-          a_user_1 = FactoryGirl.create(:user, uid: 'someuid')
+          a_user_1 = FactoryBot.create(:user, uid: 'someuid')
 
           allow_any_instance_of(described_class)
             .to receive(:env)
@@ -52,7 +52,7 @@ RSpec.describe OpenStax::Salesforce::SettingsController, type: :controller do
       routes { OpenStax::Salesforce::Engine.routes }
 
       it 'destroys users' do
-        FactoryGirl.create(:user)
+        FactoryBot.create(:user)
         expect{delete :destroy_user}.to change {OpenStax::Salesforce::User.count}.by(-1)
       end
     end

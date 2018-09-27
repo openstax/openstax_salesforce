@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :user, class: 'OpenStax::Salesforce::User' do
     uid           { SecureRandom.hex(10) }
     name          { Faker::Name.name }
@@ -7,7 +7,7 @@ FactoryGirl.define do
     instance_url  { Faker::Internet.url }
 
     transient do
-      do_not_destroy_others false
+      do_not_destroy_others { false }
     end
 
     after(:build) do |user, evaluator|
