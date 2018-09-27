@@ -4,7 +4,7 @@ RSpec.describe OpenStax::Salesforce::ApplicationController, type: :controller do
 
   controller do
     def index
-      render :text => "Yo"
+      render plain: "Yo"
     end
   end
 
@@ -16,7 +16,7 @@ RSpec.describe OpenStax::Salesforce::ApplicationController, type: :controller do
   it 'can have its admin check overridden' do
     mock_admin_user
     get :index
-    expect(response).to have_http_status(:success)
+    expect(response).to have_http_status(:ok)
   end
 
 end

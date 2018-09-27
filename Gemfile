@@ -10,8 +10,7 @@ gemspec
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
-gem "active_force", git: 'https://github.com/openstax/active_force', ref: '7caac17'
+gem "active_force", git: 'https://github.com/openstax/active_force', ref: '9efe1ba'
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
-
