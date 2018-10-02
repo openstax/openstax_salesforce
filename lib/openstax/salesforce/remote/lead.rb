@@ -18,6 +18,7 @@ module OpenStax::Salesforce::Remote
     field :os_accounts_id,      from: "OS_Accounts_ID__c"
     field :accounts_uuid,       from: "accounts_uuid_c__c"
     field :application_source,  from: "Application_Source__c"
+    field :role,                from: "Role__c"
 
     self.table_name = 'Lead'
   end
