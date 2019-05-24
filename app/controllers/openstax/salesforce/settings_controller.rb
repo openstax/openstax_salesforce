@@ -6,7 +6,7 @@ module OpenStax::Salesforce
     end
 
     def callback
-      OpenStax::Salesforce::User.save_from_omniauth!(env["omniauth.auth"])
+      OpenStax::Salesforce::User.save_from_omniauth!(request.env["omniauth.auth"])
       redirect_to root_path
     end
 
