@@ -75,7 +75,7 @@ module OpenStax::Salesforce::SpecHelpers
 
     def ensure_books_exist(book_names)
       book_names.each do |book_name|
-        if books.none?{|bb| bb.name == book_name}
+        if books.none? {|bb| bb.name == book_name}
           book = Book.new(name: book_name)
           book.save!
           books.push(book)
@@ -85,7 +85,7 @@ module OpenStax::Salesforce::SpecHelpers
 
     def ensure_schools_exist(school_names)
       school_names.compact.each do |school_name|
-        if schools.none?{|ss| ss.name == school_name}
+        if schools.none? {|ss| ss.name == school_name}
           school = School.new(name: school_name)
           school.save!
           schools.push(school)
@@ -98,7 +98,7 @@ module OpenStax::Salesforce::SpecHelpers
     end
 
     def book(name)
-      books.select{|bb| bb.name == name}.first
+      books.find { |bb| bb.name == name }
     end
 
     def book_id(name)
@@ -114,7 +114,7 @@ module OpenStax::Salesforce::SpecHelpers
     end
 
     def school(name)
-      schools.select{|ss| ss.name == name}.first
+      schools.find { |ss| ss.name == name }
     end
 
   end

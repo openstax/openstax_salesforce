@@ -8,9 +8,7 @@ RSpec.describe OpenStax::Salesforce::SettingsController, type: :controller do
     context '#callback' do
       context 'when there is not yet a SF user' do
         it 'adds a user' do
-          allow_any_instance_of(described_class)
-            .to receive(:env)
-            .and_return(omniauth_env_hash)
+          allow(request).to receive(:env).and_return(omniauth_env_hash)
 
           expect{post :callback}.to change {OpenStax::Salesforce::User.count}.by(1)
         end
@@ -21,9 +19,7 @@ RSpec.describe OpenStax::Salesforce::SettingsController, type: :controller do
           other_user_1 = FactoryBot.create(:user, do_not_destroy_others: true)
           other_user_2 = FactoryBot.create(:user, do_not_destroy_others: true)
 
-          allow_any_instance_of(described_class)
-            .to receive(:env)
-            .and_return(omniauth_env_hash)
+          allow(request).to receive(:env).and_return(omniauth_env_hash)
 
           expect{post :callback}.to change {OpenStax::Salesforce::User.count}.by(-1)
 
@@ -35,9 +31,7 @@ RSpec.describe OpenStax::Salesforce::SettingsController, type: :controller do
         it 'reuses that user' do
           a_user_1 = FactoryBot.create(:user, uid: 'someuid')
 
-          allow_any_instance_of(described_class)
-            .to receive(:env)
-            .and_return(omniauth_env_hash)
+          allow(request).to receive(:env).and_return(omniauth_env_hash)
 
           post :callback
 
