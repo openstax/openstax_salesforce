@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir['spec/**/*']
 
-  s.add_dependency "rails"
+  s.add_dependency "rails", "~> 5.0"
   s.add_dependency "restforce"
   s.add_dependency "active_force"
   s.add_dependency "omniauth-salesforce"
@@ -28,4 +28,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "faker"
   s.add_development_dependency "byebug"
   s.add_development_dependency "database_cleaner"
+  s.add_development_dependency "sprockets", "< 4.0"
 end

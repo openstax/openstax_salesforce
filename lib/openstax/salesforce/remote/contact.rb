@@ -16,6 +16,7 @@ module OpenStax::Salesforce::Remote
     field :send_faculty_verification_to, from: "SendFacultyVerificationTo__c"
     field :all_emails,                   from: "All_Emails__c"
     field :confirmed_emails,             from: "Confirmed_Emails__c"
+    field :adoption_status,              from: "Adoption_Status__c"
 
     self.table_name = 'Contact'
   end
