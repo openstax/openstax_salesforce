@@ -1,10 +1,8 @@
 require 'rails_helper'
-require 'openstax/salesforce/spec_helpers'
 
 include OpenStax::Salesforce::SpecHelpers
 
 RSpec.describe OpenStax::Salesforce::SpecHelpers do
-
   context '#limit_salesforce_queries' do
     it 'limits by one wildcard' do
       limit_salesforce_queries(OpenStax::Salesforce::Remote::Contact, email: "%foo.com")
@@ -27,5 +25,4 @@ RSpec.describe OpenStax::Salesforce::SpecHelpers do
       )
     end
   end
-
 end

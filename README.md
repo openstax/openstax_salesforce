@@ -4,17 +4,15 @@
 [![Build Status](https://travis-ci.org/openstax/openstax_salesforce.svg?branch=master)](https://travis-ci.org/openstax/openstax_salesforce)
 [![Code Climate](https://codeclimate.com/github/openstax/openstax_salesforce/badges/gpa.svg)](https://codeclimate.com/github/openstax/openstax_salesforce)
 
-OpenStax::Salesforce is a Rails engine used by OpenStax projects to communicate with the OpenStax Salesforce instance.
+OpenStax::Salesforce is a Rails engine used by OpenStax projects to communicate
+with the OpenStax Salesforce instance.
 
 ## Installation
 
-Add these line to your application's Gemfile:
+Add this line to your application's Gemfile:
 
 ```rb
 gem 'openstax_salesforce'
-
-# ActiveForce fork that supports Ruby >= 2.1 and stubbable stdout
-gem 'active_force', git: 'https://github.com/openstax/active_force', ref: '7caac17'
 ```
 
 And then execute:
@@ -29,64 +27,37 @@ Or install it yourself:
 $ gem install openstax_salesforce
 ```
 
-Then execute the following command to copy the necessary migration and the initializer to your application:
+Then execute the following command to copy the necessary initializer to your application:
 
 ```sh
 $ rake openstax_salesforce:install
 ```
 
-And then migrate your database:
-
-```sh
-$ rake db:migrate
-```
-
-Also add OpenStax::Salesforce to your application's routes:
-
-```rb
-mount OpenStax::Salesforce::Engine, at: "/salesforce"
-OpenStax::Salesforce.set_top_level_routes(self)
-```
-
-The `set_top_level_routes` should be called at the top level inside `routes.rb`.  It adds oauth callback
-routes at the top level.
-
-And provide a link on your site for administrators to access the engine.
-
-```erb
-<%= link_to 'Salesforce Setup', openstax_salesforce_path %>
-```
-
 ## Configuration
 
 After installation, the initializer for OpenStax::Salesforce will be located under
-`config/initializers/openstax_salesforce.rb`. Make sure to configure it to suit
-your needs. Pay particular attention to `authenticate_admin_proc`,
-as you will be unable to access the setup pages until this proc is setup to return
-`true` for your admins.
+`config/initializers/openstax_salesforce.rb`. Make sure to configure it to suit your needs.
+
+You will need the following information from Salesforce:
+  - Your username (append .sandboxname if using a sandbox)
+  - Your password
+  - Your security token
+  - Connected App's client key
+  - Connected App's client secret
+Enter all the above information in the initializer, secrets.yml or environment variables.
 
 ## Testing
 
-From the gem's main folder, run `bundle install`,
-`bundle exec rake db:migrate` and then
-`bundle exec rake` to run all the specs.
+From the gem's main folder, run `bundle install` and then `bundle exec rake` to run all the specs.
 
-## Specs in Parent App
+### Specs in Parent App
 
-There's a helper you can include in your parent app's salesforce specs.  It isn't automatically
-required by this engine, so you have to do it manually in your spec:
+There's a helper you can include in your parent app's salesforce specs.
+It isn't automatically required by this engine, so you have to do it manually in your spec:
 
 ```ruby
 require 'openstax/salesforce/spec_helper'
 ```
-
-If the oauth token in `OpenStax::Salesforce::User.first` expires, you can update it with
-
-```ruby
-OpenStax::Salesforce::User.first.refresh_oauth_token!
-```
-
-and then copy that token into your spec setup.
 
 ## Contributing
 

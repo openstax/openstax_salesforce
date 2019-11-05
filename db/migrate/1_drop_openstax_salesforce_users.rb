@@ -1,7 +1,7 @@
 # TODO: Remove after all servers have been migrated
-class InstallOpenStaxSalesforce < ActiveRecord::Migration[4.2]
+class DropOpenStaxSalesforceUsers < ActiveRecord::Migration[4.2]
   def change
-    create_table :openstax_salesforce_users do |t|
+    drop_table :openstax_salesforce_users do |t|
       t.string :name
       t.string :uid, null: false
       t.string :oauth_token, null: false

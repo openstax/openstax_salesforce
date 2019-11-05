@@ -1,14 +1,11 @@
-ENV["RAILS_ENV"] ||= 'test'
+ENV['RAILS_ENV'] ||= 'test'
 
 require 'spec_helper'
-require File.expand_path("../dummy/config/environment", __FILE__)
+require File.expand_path('../dummy/config/environment', __FILE__)
 require 'rspec/rails'
-require 'factory_bot_rails'
-require 'faker'
-require 'byebug'
-require 'database_cleaner'
 
 # Add additional requires below this line. Rails is not loaded until this point!
+require 'openstax/salesforce/spec_helpers'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -24,10 +21,6 @@ require 'database_cleaner'
 # require only the support files necessary.
 #
 # Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
-
-# Checks for pending migrations before tests are run.
-# If you are not using ActiveRecord, you can remove this line.
-ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -52,48 +45,4 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
-
-  # Use DatabaseCleaner instead of rspec transaction rollbacks
-  # http://tomdallimore.com/blog/taking-the-test-trash-out-with-databasecleaner-and-rspec/
-
-  config.prepend_before(:suite) do
-    DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.prepend_before(:all) do
-    DatabaseCleaner.start
-  end
-
-  config.prepend_before(:all, js: true) do
-    DatabaseCleaner.strategy = :truncation
-  end
-
-  config.prepend_before(:all, truncation: true) do
-    DatabaseCleaner.strategy = :truncation
-  end
-
-  config.prepend_before(:all) do
-    DatabaseCleaner.strategy = :transaction
-  end
-
-  config.prepend_before(:each) do
-    DatabaseCleaner.start
-  end
-
-  # https://github.com/DatabaseCleaner/database_cleaner#rspec-with-capybara-example says:
-  #   "It's also recommended to use append_after to ensure DatabaseCleaner.clean
-  #    runs after the after-test cleanup capybara/rspec installs."
-  config.append_after(:each) do
-    DatabaseCleaner.clean
-  end
-
-  config.append_after(:all) do
-    DatabaseCleaner.clean
-  end
-end
-
-def mock_admin_user
-  allow(OpenStax::Salesforce.configuration).to receive(:authenticate_admin_proc) {
-    ->(controller) { return true }
-  }
 end

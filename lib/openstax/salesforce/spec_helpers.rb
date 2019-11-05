@@ -1,30 +1,4 @@
-require 'openstax/salesforce/spec_helpers/salesforce_proxy'
-
 module OpenStax::Salesforce::SpecHelpers
-
-  def load_salesforce_user
-    clear_salesforce_user
-
-    config = OpenStax::Salesforce.configuration
-    sf_user = OpenStax::Salesforce::User.new
-
-    sf_user.name = "some name"
-    sf_user.uid = "whatever"
-    sf_user.oauth_token =   config.sandbox_oauth_token
-    sf_user.refresh_token = config.sandbox_refresh_token
-    sf_user.instance_url =  config.sandbox_instance_url.tap do |url|
-      if config.check_sandbox_instance_url && !url.match(/\/\/cs/)
-        raise "Salesforce sandbox instance URL (#{url}) does not have the expected form!"
-      end
-    end
-
-    sf_user.save!
-  end
-
-  def clear_salesforce_user
-    OpenStax::Salesforce::User.destroy_all
-  end
-
   # Uses knowledge of how `SalesforceProxy` methods create new SF records using its
   # `unique_token` to create the conditions you'd otherwise have to manually set
   # when calling `limit_salesforce_queries`.
@@ -81,4 +55,119 @@ module OpenStax::Salesforce::SpecHelpers
     end
   end
 
+  class SalesforceProxy
+    def initialize
+    end
+
+    # Used to filter records to the scope of one spec
+    def reset_unique_token(token = SecureRandom.hex(10))
+      @unique_token = token
+    end
+
+    def clear_unique_token
+      @unique_token = nil
+    end
+
+    def new_contact(first_name: nil, last_name: nil, school_name: "JP University",
+                    email: nil, email_alt: nil, faculty_verified: nil, school_type: nil)
+      ensure_schools_exist([school_name])
+
+      Contact.new(
+        first_name: first_name || Faker::Name.first_name,
+        last_name: last_name!(last_name),
+        school_id: school_id(school_name),
+        email: email,
+        email_alt: email_alt,
+        faculty_verified: faculty_verified,
+        school_type: school_type
+      ).tap do |contact|
+        if !contact.save
+          raise "Could not save SF contact: #{contact.errors}"
+        end
+      end
+    end
+
+    def new_lead(email:, status: nil, last_name: nil, source: nil, school_name: "JP University")
+      Lead.new(
+        email: email,
+        status: status,
+        last_name: last_name!(last_name),
+        school: school_name,
+        source: source
+      ).tap do |lead|
+        if !lead.save
+          raise "Could not save SF lead: #{lead.errors}"
+        end
+      end
+    end
+
+    def new_campaign(name: SecureRandom.hex(8))
+      Campaign.new(
+        name: name
+      ).tap do |campaign|
+        if !campaign.save
+          raise "Could not save SF Campaign: #{campaign.errors}"
+        end
+      end
+    end
+
+    def new_campaign_member(contact_id:, campaign_id:)
+      CampaignMember.new(
+        contact_id: contact_id,
+        campaign_id: campaign_id
+      ).tap do |campaign_member|
+        if !campaign_member.save
+          raise "Could not save SF Campaign Member: #{campaign_member.errors}"
+        end
+      end
+    end
+
+    def last_name!(input)
+      "#{input || Faker::Name.last_name}#{@unique_token if @unique_token.present?}"
+    end
+
+    def ensure_books_exist(book_names)
+      book_names.each do |book_name|
+        if books.none? {|bb| bb.name == book_name}
+          book = Book.new(name: book_name)
+          book.save!
+          books.push(book)
+        end
+      end
+    end
+
+    def ensure_schools_exist(school_names)
+      school_names.compact.each do |school_name|
+        if schools.none? {|ss| ss.name == school_name}
+          school = School.new(name: school_name)
+          school.save!
+          schools.push(school)
+        end
+      end
+    end
+
+    def books
+      @books ||= Book.all
+    end
+
+    def book(name)
+      books.find { |bb| bb.name == name }
+    end
+
+    def book_id(name)
+      book(name).id
+    end
+
+    def schools
+      @schools ||= School.all
+    end
+
+    def school_id(name)
+      school(name).try(:id)
+    end
+
+    def school(name)
+      schools.find { |ss| ss.name == name }
+    end
+  end
 end
