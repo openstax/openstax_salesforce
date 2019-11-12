@@ -56,6 +56,8 @@ module OpenStax::Salesforce::SpecHelpers
   end
 
   class SalesforceProxy
+    include OpenStax::Salesforce::Remote
+
     def initialize
     end
 
