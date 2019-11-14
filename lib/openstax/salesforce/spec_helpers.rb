@@ -59,6 +59,8 @@ module OpenStax::Salesforce::SpecHelpers
     include OpenStax::Salesforce::Remote
 
     def initialize
+      # For cassette consistency, to ensure specs always get new tokens
+      ActiveForce.clear_sfdc_client!
     end
 
     # Used to filter records to the scope of one spec
