@@ -29,7 +29,7 @@ module OpenStax
     # See `config/initializers/openstax_salesforce.rb` for documentation on options
     class Configuration
       attr_writer :api_version, :login_domain
-      attr_accessor :username, :password, :security_token, :client_key, :client_secret
+      attr_accessor :username, :password, :security_token, :consumer_key, :consumer_secret
 
       def api_version
         @api_version ||= '37.0'
@@ -43,8 +43,8 @@ module OpenStax
         raise(IllegalState, "The Salesforce username is missing") if username.nil?
         raise(IllegalState, "The Salesforce password is missing") if password.nil?
         raise(IllegalState, "The Salesforce security token is missing") if security_token.nil?
-        raise(IllegalState, "The Salesforce client key is missing") if client_key.nil?
-        raise(IllegalState, "The Salesforce client secret is missing") if client_secret.nil?
+        raise(IllegalState, "The Salesforce consumer key is missing") if consumer_key.nil?
+        raise(IllegalState, "The Salesforce consumer secret is missing") if consumer_secret.nil?
       end
     end
 
