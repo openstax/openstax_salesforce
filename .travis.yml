@@ -1,18 +1,7 @@
-sudo: false
+dist: xenial
 language: ruby
-rvm: 2.3.7
+rvm: 2.6.3
 cache: bundler
 bundler_args: --retry=6
-script:
-  - bundle exec rake
 notifications:
   email: false
-addons:
-   postgresql: "9.4"
-before_install:
-  - gem install bundler
-before_script:
-  - export OXT_DB_USER=postgres
-  - export OXT_DB_PASS=
-  - export OXT_TEST_DB=travis_ci_test
-  - bundle exec rake db:create:all db:migrate

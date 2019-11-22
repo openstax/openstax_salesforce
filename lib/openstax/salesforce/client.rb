@@ -1,25 +1,19 @@
 module OpenStax::Salesforce
   class Client < ::Restforce::Data::Client
-
     def initialize
-      user = OpenStax::Salesforce::User.first
+      configuration = OpenStax::Salesforce.configuration
 
-      raise(UserMissing, "The Salesforce client was requested but no user is available.") if user.nil?
+      configuration.validate!
 
-      client_key = OpenStax::Salesforce.configuration.salesforce_client_key
-      client_secret = OpenStax::Salesforce.configuration.salesforce_client_secret
-
-      raise(IllegalState, "The Salesforce key is missing") if client_key.nil?
-      raise(IllegalState, "The Salesforce secret is missing") if client_secret.nil?
-
-      super(host: OpenStax::Salesforce.configuration.salesforce_login_domain,
-            oauth_token: user.oauth_token,
-            refresh_token: user.refresh_token,
-            instance_url: user.instance_url,
-            client_id: client_key,
-            client_secret: client_secret,
-            api_version: '37.0')
+      super(
+        username:       configuration.username,
+        password:       configuration.password,
+        security_token: configuration.security_token,
+        client_id:      configuration.consumer_key,
+        client_secret:  configuration.consumer_secret,
+        api_version:    configuration.api_version,
+        host:           configuration.login_domain
+      )
     end
-
   end
 end

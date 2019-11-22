@@ -1,6 +1,5 @@
 module OpenStax::Salesforce::Remote
   class TermYear
-
     # TermYear strings in Salesforce look like:
     #   2015 - 16 Fall
     #   2015 - 16 Spring
@@ -75,6 +74,5 @@ module OpenStax::Salesforce::Remote
     end
 
     class ParseError < StandardError; end
-
   end
 end

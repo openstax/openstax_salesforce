@@ -1,6 +1,5 @@
 module OpenStax::Salesforce::Remote
   class TutorCoursePeriod < ActiveForce::SObject
-
     field :num_teachers,              from: "Active_Teachers__c", as: :int
     field :base_year,                 from: "Base_Year__c", as: :int
     field :book_name,                 from: "Book_Name__c"
@@ -44,6 +43,5 @@ module OpenStax::Salesforce::Remote
 
     STATUS_APPROVED = "Approved"
     STATUS_ARCHIVED = "ArchivedPeriod"
-
   end
 end

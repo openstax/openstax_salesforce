@@ -15,7 +15,5 @@ gemspec
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
-gem "active_force", github: 'openstax/active_force'
-
 # To use a debugger
-# gem 'byebug', group: [:development, :test]
+gem 'byebug'

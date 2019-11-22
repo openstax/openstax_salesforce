@@ -1,9 +1,7 @@
 # Monkey patching
 
 module ActiveForce
-
   class << self
-
     # Use a lazy setting of the client so that migrations etc are in place
     # to allow the Client to be successfully instantiated.
     alias_method :original_sfdc_client, :sfdc_client
@@ -17,7 +15,6 @@ module ActiveForce
     def clear_sfdc_client!
       self.sfdc_client = nil
     end
-
   end
 
   class SObject
@@ -34,5 +31,4 @@ module ActiveForce
     # access to the original implementation
     singleton_class.send(:alias_method, :original_query, :query)
   end
-
 end
