@@ -185,13 +185,13 @@ module OpenStax::Salesforce::SpecHelpers
         config.define_cassette_placeholder('<salesforce_instance_url_lower>') do
           authentication.instance_url.downcase
         end
-        config.define_cassette_placeholder('<salesforce_id>' ) do
+        config.define_cassette_placeholder('<salesforce_id>') do
           authentication.id
         end
         config.define_cassette_placeholder('<salesforce_access_token>') do
           authentication.access_token
         end
-        config.define_cassette_placeholder('<salesforce_signature>' ) do
+        config.define_cassette_placeholder('<salesforce_signature>') do
           authentication.signature
         end
       end
