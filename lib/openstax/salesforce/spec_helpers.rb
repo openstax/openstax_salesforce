@@ -169,5 +169,32 @@ module OpenStax::Salesforce::SpecHelpers
     def school(name)
       schools.find { |ss| ss.name == name }
     end
+
+    def setup_cassette
+      VCR.configure do |config|
+        config.define_cassette_placeholder('<salesforce_instance_url>') do
+          'https://example.salesforce.com'
+        end
+        config.define_cassette_placeholder('<salesforce_instance_url_lower>') do
+          'https://example.salesforce.com'
+        end
+        authentication = ActiveForce.sfdc_client.authenticate!
+        config.define_cassette_placeholder('<salesforce_instance_url>') do
+          authentication.instance_url
+        end
+        config.define_cassette_placeholder('<salesforce_instance_url_lower>') do
+          authentication.instance_url.downcase
+        end
+        config.define_cassette_placeholder('<salesforce_id>' ) do
+          authentication.id
+        end
+        config.define_cassette_placeholder('<salesforce_access_token>') do
+          authentication.access_token
+        end
+        config.define_cassette_placeholder('<salesforce_signature>' ) do
+          authentication.signature
+        end
+      end
+    end
   end
 end
