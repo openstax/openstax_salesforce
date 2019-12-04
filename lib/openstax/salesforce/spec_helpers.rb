@@ -131,27 +131,23 @@ module OpenStax::Salesforce::SpecHelpers
     end
 
     def ensure_books_exist(book_names)
-      book_names.each do |book_name|
-        if books.none? {|bb| bb.name == book_name}
-          book = Book.new(name: book_name)
-          book.save!
-          books.push(book)
-        end
+      @books = OpenStax::Salesforce::Remote::Book.where(name: book_names).to_a
+
+      (book_names - books.map(&:name)).each do |book_name|
+        OpenStax::Salesforce::Remote::Book.new(name: book_name).save!
       end
     end
 
     def ensure_schools_exist(school_names)
-      school_names.compact.each do |school_name|
-        if schools.none? {|ss| ss.name == school_name}
-          school = School.new(name: school_name)
-          school.save!
-          schools.push(school)
-        end
+      @schools = OpenStax::Salesforce::Remote::School.where(name: school_names).to_a
+
+      (school_names - schools.map(&:name)).each do |school_name|
+        OpenStax::Salesforce::Remote::School.new(name: school_name).save!
       end
     end
 
     def books
-      @books ||= Book.all
+      @books ||= OpenStax::Salesforce::Remote::Book.all
     end
 
     def book(name)
@@ -163,7 +159,7 @@ module OpenStax::Salesforce::SpecHelpers
     end
 
     def schools
-      @schools ||= School.all
+      @schools ||= OpenStax::Salesforce::Remote::School.all
     end
 
     def school_id(name)
@@ -172,6 +168,33 @@ module OpenStax::Salesforce::SpecHelpers
 
     def school(name)
       schools.find { |ss| ss.name == name }
+    end
+
+    def setup_cassette
+      VCR.configure do |config|
+        config.define_cassette_placeholder('<salesforce_instance_url>') do
+          'https://example.salesforce.com'
+        end
+        config.define_cassette_placeholder('<salesforce_instance_url_lower>') do
+          'https://example.salesforce.com'
+        end
+        authentication = ActiveForce.sfdc_client.authenticate!
+        config.define_cassette_placeholder('<salesforce_instance_url>') do
+          authentication.instance_url
+        end
+        config.define_cassette_placeholder('<salesforce_instance_url_lower>') do
+          authentication.instance_url.downcase
+        end
+        config.define_cassette_placeholder('<salesforce_id>') do
+          authentication.id
+        end
+        config.define_cassette_placeholder('<salesforce_access_token>') do
+          authentication.access_token
+        end
+        config.define_cassette_placeholder('<salesforce_signature>') do
+          authentication.signature
+        end
+      end
     end
   end
 end
