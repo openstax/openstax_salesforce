@@ -5,3 +5,6 @@ cache: bundler
 bundler_args: --retry=6
 notifications:
   email: false
+env:
+  - "RAILS_VERSION=5.2.4.3"
+  - "RAILS_VERSION=6.0.3"
