@@ -8,3 +8,4 @@ notifications:
 env:
   - "RAILS_VERSION=5.2.4.3"
   - "RAILS_VERSION=6.0.3"
+
