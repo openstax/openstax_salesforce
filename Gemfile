@@ -17,3 +17,16 @@ gemspec
 
 # To use a debugger
 gem 'byebug'
+
+rails_version = ENV["RAILS_VERSION"] || "default"
+
+rails = case rails_version
+when "master"
+  {github: "rails/rails"}
+when "default"
+  ">= 5.2.4.3"
+else
+  "~> #{rails_version}"
+end
+
+gem "rails", rails
