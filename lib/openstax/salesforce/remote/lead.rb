@@ -38,6 +38,15 @@ module OpenStax::Salesforce::Remote
     field :finalize_educator_signup,   from: "FV_Final__c", as: :boolean
 
     validates(
+      :role,
+      allow_blank: true,
+      inclusion: {
+        in: VALID_ROLES,
+        message: "must be either #{VALID_ROLES.join(' or ')}"
+      }
+    )
+
+    validates(
       :verification_status,
       allow_blank: true,
       inclusion: {
