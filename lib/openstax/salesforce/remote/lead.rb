@@ -20,6 +20,7 @@ module OpenStax::Salesforce::Remote
     field :application_source,  from: "Application_Source__c"
     field :role,                from: "Role__c"
     field :who_chooses_books,   from: "who_chooses_books__c"
+    field :verification_status, from: "FV_Status__c"
     field :finalize_signup,   from: "FV_Final__c", as: :boolean
 
     self.table_name = 'Lead'
