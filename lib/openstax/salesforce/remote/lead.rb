@@ -1,5 +1,19 @@
 module OpenStax::Salesforce::Remote
   class Lead < ActiveForce::SObject
+
+    VALID_VERIFICATION_STATUSES = %w[pending_faculty confirmed_faculty rejected_faculty].freeze
+    VALID_ROLES = %w[
+      student
+      faculty
+      other
+      administrator
+      librarian
+      adjunct\ faculty
+      instructional\ designer
+      home\ school\ teacher
+    ].freeze
+    VALID_WHO_CHOOSES_BOOKS = %w[instructor committee coordinator].freeze
+
     field :name,                from: "Name"
     field :first_name,          from: "FirstName"
     field :last_name,           from: "LastName"
@@ -19,7 +33,38 @@ module OpenStax::Salesforce::Remote
     field :accounts_uuid,       from: "accounts_uuid_c__c"
     field :application_source,  from: "Application_Source__c"
     field :role,                from: "Role__c"
+    field :who_chooses_books,   from: "who_chooses_books__c"
+    field :verification_status, from: "FV_Status__c"
+    field :finalize_educator_signup,   from: "FV_Final__c", as: :boolean
+
+    validates(
+      :role,
+      allow_blank: true,
+      inclusion: {
+        in: VALID_ROLES,
+        message: "must be either #{VALID_ROLES.join(' or ')}"
+      }
+    )
+
+    validates(
+      :verification_status,
+      allow_blank: true,
+      inclusion: {
+        in: VALID_VERIFICATION_STATUSES,
+        message: "must be either #{VALID_VERIFICATION_STATUSES.join(' or ')}"
+      }
+    )
+
+    validates(
+      :who_chooses_books,
+      allow_blank: true,
+      inclusion: {
+        in: VALID_WHO_CHOOSES_BOOKS,
+        message: "must be either #{VALID_WHO_CHOOSES_BOOKS.join(' or ')}"
+      }
+    )
 
     self.table_name = 'Lead'
+
   end
 end
