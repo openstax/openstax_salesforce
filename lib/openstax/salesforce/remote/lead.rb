@@ -4,6 +4,7 @@ module OpenStax::Salesforce::Remote
     VALID_VERIFICATION_STATUSES = %w[pending_faculty confirmed_faculty rejected_faculty].freeze
     VALID_ROLES = %w[
       student
+      instructor
       faculty
       other
       administrator
@@ -37,15 +38,8 @@ module OpenStax::Salesforce::Remote
     field :verification_status, from: "FV_Status__c"
     field :finalize_educator_signup,   from: "FV_Final__c", as: :boolean
 
-    validates(
-      :role,
-      allow_blank: true,
-      inclusion: {
-        in: VALID_ROLES,
-        message: "must be either #{VALID_ROLES.join(' or ')}"
-      }
-    )
-
+    validates(:last_name, presence: true)
+    validates(:school, presence: true)
     validates(
       :verification_status,
       allow_blank: true,
