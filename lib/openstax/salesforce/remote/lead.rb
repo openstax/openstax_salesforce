@@ -1,7 +1,13 @@
 module OpenStax::Salesforce::Remote
   class Lead < ActiveForce::SObject
 
-    VALID_VERIFICATION_STATUSES = %w[pending_faculty confirmed_faculty rejected_faculty].freeze
+    VALID_VERIFICATION_STATUSES = %w[
+      pending_faculty
+      confirmed_faculty
+      rejected_faculty
+      no_faculty_info
+    ].freeze
+
     VALID_ROLES = %w[
       student
       instructor
@@ -13,6 +19,7 @@ module OpenStax::Salesforce::Remote
       instructional\ designer
       home\ school\ teacher
     ].freeze
+
     VALID_WHO_CHOOSES_BOOKS = %w[instructor committee coordinator].freeze
 
     field :name,                from: "Name"
