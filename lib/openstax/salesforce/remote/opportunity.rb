@@ -4,6 +4,18 @@ module OpenStax::Salesforce::Remote
     field :book_name,                    from: "Book_Text__c"
     field :contact_id,                   from: "Contact__c"
     field :new,                          from: "New__c",       as: :boolean
+    field :close_date,                   from: "CloseDate",     as: :datetime
+    field :stage_name,                   from: "StageName"
+    field :type,                         from: "Type"
+    field :number_of_students,           from: "Students__c"
+    field :student_number_status,        from: "Student_No_Status__c"
+    field :time_period,                  from: "Time_Period__c"
+    field :class_start_date,             from: "Class_Start_Date__c",  as: :datetime
+    field :school_id,                    from: "AccountId"
+    field :book_id,                      from: "Book__c"
+    field :contact_id,                   from: "Contact__c"
+    field :lead_source,                  from: "LeadSource"
+
 
     self.table_name = 'Opportunity'
 
