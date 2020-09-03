@@ -16,6 +16,7 @@ module OpenStax::Salesforce::Remote
     field :contact_id,                   from: "Contact__c"
     field :lead_source,                  from: "LeadSource"
     field :os_accounts_id,               from: "OS_Accounts_ID__c"
+    field :name,                         from: "Name"
 
 
     self.table_name = 'Opportunity'
