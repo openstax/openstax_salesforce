@@ -19,6 +19,7 @@ module OpenStax::Salesforce::Remote
     field :adoption_status,              from: "Adoption_Status__c"
     field :grant_tutor_access,           from: "Grant_Tutor_Access__c", as: :boolean
     field :b_r_i_marketing,              from: "BRI_Marketing__c", as: :boolean # Bill of Rights Institute (book) marketing
+    field :title_1_school,               from: "Title_1_school__c", as: :boolean
 
     self.table_name = 'Contact'
   end

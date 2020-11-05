@@ -34,6 +34,7 @@ module OpenStax::Salesforce::Remote
     field :verification_status, from: "FV_Status__c"
     field :finalize_educator_signup,   from: "FV_Final__c", as: :boolean
     field :needs_cs_review,   from: "Needs_CS_Review__c", as: :boolean
+    field :title_1_school,    from: "Title_1_school__c", as: :boolean
 
     validates(:last_name, presence: true)
     validates(:school, presence: true)
