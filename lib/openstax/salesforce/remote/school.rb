@@ -1,6 +1,8 @@
 module OpenStax::Salesforce::Remote
   class School < ActiveForce::SObject
     field :name,                from: 'Name'
+    field :city,                from: 'BillingCity'
+    field :state,               from: 'BillingState'
     field :type,                from: 'Type'
     field :school_location,     from: 'School_Location__c'
     field :sheerid_school_name, from: 'SheedID_School_Name__c'
