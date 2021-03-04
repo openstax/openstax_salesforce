@@ -16,6 +16,8 @@ module OpenStax::Salesforce::Remote
     field :salutation,          from: "Salutation"
     field :subject,             from: "Subject__c"
     field :school,              from: "Company"
+    field :city,                from: "City"
+    field :state,               from: "State"
     field :phone,               from: "Phone"
     field :website,             from: "Website"
     field :status,              from: "Status"
@@ -33,9 +35,10 @@ module OpenStax::Salesforce::Remote
     field :who_chooses_books,   from: "who_chooses_books__c"
     field :verification_status, from: "FV_Status__c"
     field :finalize_educator_signup,   from: "FV_Final__c", as: :boolean
-    field :needs_cs_review,   from: "Needs_CS_Review__c", as: :boolean
-    field :b_r_i_marketing,   from: "BRI_Marketing__c", as: :boolean # Bill of Rights Institute (book) marketing
-    field :title_1_school,    from: "Title_1_school__c", as: :boolean
+    field :needs_cs_review,     from: "Needs_CS_Review__c", as: :boolean
+    field :b_r_i_marketing,     from: "BRI_Marketing__c", as: :boolean # Bill of Rights Institute (book) marketing
+    field :title_1_school,      from: "Title_1_school__c", as: :boolean
+    field :sheerid_school_name, from: "SheerID_School_Name__c"
 
     validates(:last_name, presence: true)
     validates(:school, presence: true)
