@@ -29,8 +29,6 @@ jobs:
       - name: Setup
         env:
           RAILS_VERSION: ${{ matrix.rails_version }}
-        run: |
-          bundle install
-          bundle exec rake --trace db:create db:schema:load db:seed
+        run: bundle install
       - name: Test
         run: bundle exec rake spec
