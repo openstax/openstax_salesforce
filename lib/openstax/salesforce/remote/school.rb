@@ -10,5 +10,9 @@ module OpenStax::Salesforce::Remote
     field :is_child_of_kip,     from: 'child_of_kip__c', as: :boolean
 
     self.table_name = 'Account'
+
+    def self.query
+      super.where("RecordType.Name = 'School'")
+    end
   end
 end
