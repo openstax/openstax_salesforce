@@ -43,5 +43,6 @@ module OpenStax::Salesforce::Remote
 
     STATUS_APPROVED = "Approved"
     STATUS_ARCHIVED = "ArchivedPeriod"
+    STATUS_DROPPED  = "Dropped"
   end
 end
