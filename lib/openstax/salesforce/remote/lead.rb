@@ -18,6 +18,7 @@ module OpenStax::Salesforce::Remote
     field :school,              from: "Company"
     field :city,                from: "City"
     field :state,               from: "State"
+    field :state_code,          from: "StateCode"
     field :phone,               from: "Phone"
     field :website,             from: "Website"
     field :status,              from: "Status"
