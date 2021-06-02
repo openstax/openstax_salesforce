@@ -134,7 +134,9 @@ module OpenStax::Salesforce::SpecHelpers
       @books = OpenStax::Salesforce::Remote::Book.where(name: book_names).to_a
 
       (book_names - books.map(&:name)).each do |book_name|
-        OpenStax::Salesforce::Remote::Book.new(name: book_name).save!
+        OpenStax::Salesforce::Remote::Book.new(
+          name: book_name, annualization_number: [ 1.4, 1.6 ].sample
+        ).save!
       end
     end
 

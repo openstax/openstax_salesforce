@@ -3,6 +3,7 @@ module OpenStax::Salesforce::Remote
     field :name,                from: 'Name'
     field :city,                from: 'BillingCity'
     field :state,               from: 'BillingState'
+    field :country,             from: 'BillingCountry'
     field :type,                from: 'Type'
     field :school_location,     from: 'School_Location__c'
     field :sheerid_school_name, from: 'SheerID_School_Name__c'
@@ -10,5 +11,9 @@ module OpenStax::Salesforce::Remote
     field :is_child_of_kip,     from: 'child_of_kip__c', as: :boolean
 
     self.table_name = 'Account'
+
+    def self.query
+      super.where("RecordType.Name = 'School'")
+    end
   end
 end

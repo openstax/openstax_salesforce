@@ -1,5 +1,5 @@
 module OpenStax
   module Salesforce
-    VERSION = '4.12.0'
+    VERSION = '5.3.0'
   end
 end
