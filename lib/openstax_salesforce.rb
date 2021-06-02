@@ -15,6 +15,7 @@ require "openstax/salesforce/remote/contact"
 require "openstax/salesforce/remote/lead"
 require "openstax/salesforce/remote/campaign"
 require "openstax/salesforce/remote/campaign_member"
+require "openstax/salesforce/remote/account_contact_relation"
 
 module OpenStax
   module Salesforce
@@ -32,7 +33,7 @@ module OpenStax
       attr_accessor :username, :password, :security_token, :consumer_key, :consumer_secret
 
       def api_version
-        @api_version ||= '37.0'
+        @api_version ||= '51.0'
       end
 
       def login_domain
