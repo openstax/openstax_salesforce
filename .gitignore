@@ -8,7 +8,7 @@ spec/dummy/.sass-cache
 *.gem
 Gemfile.lock
 .byebug_history
-.idea/ 
+.idea/
 
 # Finder
 .DS_Store
