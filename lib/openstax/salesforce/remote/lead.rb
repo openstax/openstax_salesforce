@@ -36,11 +36,10 @@ module OpenStax::Salesforce::Remote
     field :other_role_name,     from: "other_role_name__c"
     field :who_chooses_books,   from: "who_chooses_books__c"
     field :verification_status, from: "FV_Status__c"
-    field :finalize_educator_signup,   from: "FV_Final__c", as: :boolean
-    field :needs_cs_review,     from: "Needs_CS_Review__c", as: :boolean
     field :b_r_i_marketing,     from: "BRI_Marketing__c", as: :boolean # Bill of Rights Institute (book) marketing
     field :title_1_school,      from: "Title_1_school__c", as: :boolean
     field :sheerid_school_name, from: "SheerID_School_Name__c"
+    field :instant_conversion, from: "Instant_Conversion__c", as: :boolean
 
     # These 2 fields both hold the Account (School) ID, but have different data types and uses in SF
     field :account_id,          from: 'Account_ID__c'
