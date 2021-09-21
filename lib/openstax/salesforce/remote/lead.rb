@@ -5,7 +5,6 @@ module OpenStax::Salesforce::Remote
       pending_faculty
       confirmed_faculty
       rejected_faculty
-      no_faculty_info
     ].freeze
 
     VALID_WHO_CHOOSES_BOOKS = %w[instructor committee coordinator].freeze
