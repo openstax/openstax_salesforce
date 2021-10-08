@@ -40,6 +40,7 @@ module OpenStax::Salesforce::Remote
     field :title_1_school,      from: 'Title_1_school__c', as: :boolean
     field :sheerid_school_name, from: 'SheerID_School_Name__c'
     field :instant_conversion,  from: 'Instant_Conversion__c', as: :boolean
+    field :grant_tutor_access,  from: 'Grant_Tutor_Access__c', as: :boolean
 
     # These 2 fields both hold the Account (School) ID, but have different data types and uses in SF
     field :account_id,          from: 'Account_ID__c'
