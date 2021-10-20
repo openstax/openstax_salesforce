@@ -34,6 +34,7 @@ module OpenStax::Salesforce::Remote
     field :accounts_uuid,       from: 'Accounts_UUID__c'
     field :application_source,  from: 'Application_Source__c'
     field :role,                from: 'Role__c'
+    field :position,            from: 'Position__c'
     field :who_chooses_books,   from: 'who_chooses_books__c'
     field :verification_status, from: 'FV_Status__c'
     field :b_r_i_marketing,     from: 'BRI_Marketing__c', as: :boolean # Bill of Rights Institute (book) marketing
