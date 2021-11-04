@@ -29,6 +29,7 @@ module OpenStax::Salesforce::Remote
     field :newsletter,          from: 'Newsletter__c'
     field :newsletter_opt_in,   from: 'Newsletter_Opt_In__c'
     field :adoption_status,     from: 'Adoption_Status__c'
+    field :adoption_json,       from: 'AdoptionsJSON__c'
     field :num_students,        from: 'Number_of_Students__c'
     field :os_accounts_id,      from: 'Accounts_ID__c'
     field :accounts_uuid,       from: 'Accounts_UUID__c'
