@@ -10,7 +10,7 @@ module OpenStax::Salesforce::Remote
     field :email,                        from: 'Email'
     field :email_alt,                    from: 'Email_alt__c'
     field :faculty_confirmed_date,       from: 'Faculty_Confirmed_Date__c', as: :datetime
-    field :faculty_verified,             from: 'Faculty_Verified__c'
+    field :faculty_verified,             from: 'FV_Status__c'
     field :last_modified_at,             from: 'LastModifiedDate'
     field :school_id,                    from: 'AccountId'
     field :school_type,                  from: 'School_Type__c'
