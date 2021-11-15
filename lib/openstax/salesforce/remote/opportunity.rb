@@ -24,7 +24,7 @@ module OpenStax::Salesforce::Remote
     self.table_name = 'Opportunity'
 
     def book_opportunities
-      where("record_type_name:'Book Opp'")
+      super.where("record_type_name:'Book Opp'")
     end
 
     def term_year_object
