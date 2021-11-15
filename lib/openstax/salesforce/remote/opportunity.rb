@@ -23,6 +23,10 @@ module OpenStax::Salesforce::Remote
 
     self.table_name = 'Opportunity'
 
+    def self.book_opportunities
+      super.where("record_type_name:'Book Opp'")
+    end
+
     def term_year_object
       @term_year_object ||= OpenStax::Salesforce::Remote::TermYear.from_string(term_year)
     end
