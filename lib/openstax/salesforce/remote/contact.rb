@@ -22,6 +22,7 @@ module OpenStax::Salesforce::Remote
     field :b_r_i_marketing,              from: 'BRI_Marketing__c', as: :boolean # Bill of Rights Institute (book) marketing
     field :title_1_school,               from: 'Title_1_school__c', as: :boolean
     field :accounts_uuid,                from: 'Accounts_UUID__c'
+    field :lead_source,                  from: 'LeadSource'
 
     self.table_name = 'Contact'
   end
