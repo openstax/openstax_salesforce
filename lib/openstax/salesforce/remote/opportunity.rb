@@ -16,6 +16,7 @@ module OpenStax::Salesforce::Remote
     field :contact_id,                   from: "Contact__c"
     field :lead_source,                  from: "LeadSource"
     field :os_accounts_id,               from: "OS_Accounts_ID__c"
+    field :accounts_uuid,                from: 'Accounts_UUID__c'
     field :name,                         from: "Name"
     field :record_type_name,             from: "Opportunity_Record_Type_Name__c"
     field :record_type_id,               from: "RecordTypeId"
