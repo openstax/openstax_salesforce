@@ -11,6 +11,7 @@ module OpenStax::Salesforce::Remote
     field :student_number_status,        from: "Student_No_Status__c"
     field :time_period,                  from: "Time_Period__c"
     field :class_start_date,             from: "Class_Start_Date__c",  as: :datetime
+    field :renewal_class_start_date,     from: "CSDInput__c",  as: :datetime
     field :school_id,                    from: "AccountId"
     field :book_id,                      from: "Book__c"
     field :contact_id,                   from: "Contact__c"
