@@ -85,7 +85,7 @@ module OpenStax::Salesforce::SpecHelpers
         faculty_verified: faculty_verified,
         school_type: school_type
       ).tap do |contact|
-        if !contact.save
+        unless contact.save
           raise "Could not save SF contact: #{contact.errors}"
         end
       end
@@ -99,7 +99,7 @@ module OpenStax::Salesforce::SpecHelpers
         school: school_name,
         source: source
       ).tap do |lead|
-        if !lead.save
+        unless lead.save
           raise "Could not save SF lead: #{lead.errors}"
         end
       end
@@ -109,7 +109,7 @@ module OpenStax::Salesforce::SpecHelpers
       Campaign.new(
         name: name
       ).tap do |campaign|
-        if !campaign.save
+        unless campaign.save
           raise "Could not save SF Campaign: #{campaign.errors}"
         end
       end
@@ -120,7 +120,7 @@ module OpenStax::Salesforce::SpecHelpers
         contact_id: contact_id,
         campaign_id: campaign_id
       ).tap do |campaign_member|
-        if !campaign_member.save
+        unless campaign_member.save
           raise "Could not save SF Campaign Member: #{campaign_member.errors}"
         end
       end
