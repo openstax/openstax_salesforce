@@ -3,8 +3,8 @@ module OpenStax::Salesforce::Remote
     field :term_year,                    from: "TermYear__c"
     field :book_name,                    from: "Book_Text__c"
     field :contact_id,                   from: "Contact__c"
-    field :new,                          from: "New__c",       as: :boolean
-    field :close_date,                   from: "CloseDate",     as: :datetime
+    field :renewal_status,               from: "Renewal_Status__c"
+    field :close_date,                   from: "CloseDate", as: :datetime
     field :stage_name,                   from: "StageName"
     field :type,                         from: "Type"
     field :number_of_students,           from: "Students__c"
@@ -15,7 +15,6 @@ module OpenStax::Salesforce::Remote
     field :school_id,                    from: "AccountId"
     field :book_id,                      from: "Book__c"
     field :contact_id,                   from: "Contact__c"
-    field :lead_source,                  from: "LeadSource"
     field :os_accounts_id,               from: "OS_Accounts_ID__c"
     field :accounts_uuid,                from: 'Accounts_UUID__c'
     field :name,                         from: "Name"
