@@ -21,7 +21,15 @@ Bundler::GemHelper.install_tasks
 require 'rspec/core'
 require 'rspec/core/rake_task'
 
-desc 'Run all specs in spec directory (excluding plugin specs)'
-RSpec::Core::RakeTask.new :spec
+if defined?(RSpec)
+  desc 'Run factory specs.'
+  RSpec::Core::RakeTask.new(:factory_specs) do |t|
+    t.pattern = './spec/factories_spec.rb'
+  end
 
+  desc 'Run all specs in spec directory (excluding plugin specs)'
+  RSpec::Core::RakeTask.new :spec
+end
+
+task spec: :factory_specs
 task default: :spec

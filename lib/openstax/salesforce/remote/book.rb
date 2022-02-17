@@ -1,8 +1,15 @@
-module OpenStax::Salesforce::Remote
-  class Book < ActiveForce::SObject
-    field :name,                 from: "Name"
-    field :annualization_number, from: "Annualization_number__c", as: :decimal
+# frozen_string_literal: true
 
-    self.table_name = 'Book__c'
+module OpenStax
+  module Salesforce
+    module Remote
+      # Book object from Salesforce
+      class Book < ActiveForce::SObject
+        field :name,                 from: 'Name'
+        field :annualization_number, from: 'Annualization_number__c', as: :decimal
+
+        self.table_name = 'Book__c'
+      end
+    end
   end
 end

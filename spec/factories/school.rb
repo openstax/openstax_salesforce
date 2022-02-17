@@ -1,10 +1,11 @@
 FactoryBot.define do
-  factory :school, class: School do
+  factory :school, class: OpenStax::Salesforce::Remote::School do
+    skip_create
+
     name { Faker::University.name }
     city { Faker::Address.city }
     state { Faker::Address.country }
     country { Faker::Address.country }
-    id { Faker::Alphanumeric.alphanumeric(number: 10, min_alpha: 3, min_numeric: 3) }
     type do
       ['High School',
        'College/University (4)',
