@@ -73,7 +73,7 @@ module OpenStax::Salesforce::SpecHelpers
     end
 
     def new_contact(first_name: nil, last_name: nil, school_name: "RSpec University",
-                    email: nil, faculty_verified: nil, school_type: nil)
+                    email: nil, faculty_verified: nil)
       ensure_schools_exist([school_name])
 
       Contact.new(
@@ -81,8 +81,7 @@ module OpenStax::Salesforce::SpecHelpers
         last_name: last_name || Faker::Name.last_name,
         school_id: school_id(school_name),
         email: email || Faker::Internet.safe_email,
-        faculty_verified: faculty_verified,
-        school_type: school_type
+        faculty_verified: faculty_verified
       ).tap do |contact|
         raise "Could not save SF contact: #{contact.errors}" unless contact.save
       end
