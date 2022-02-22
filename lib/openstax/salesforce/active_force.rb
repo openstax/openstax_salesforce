@@ -1,12 +1,13 @@
-# Monkey patching
+# frozen_string_literal: true
 
+# Monkey patching
 module ActiveForce
   class << self
     # Use a lazy setting of the client so that migrations etc are in place
     # to allow the Client to be successfully instantiated.
     alias_method :original_sfdc_client, :sfdc_client
     def sfdc_client
-      if !original_sfdc_client.is_a?(OpenStax::Salesforce::Client)
+      unless original_sfdc_client.is_a?(OpenStax::Salesforce::Client)
         self.sfdc_client = OpenStax::Salesforce::Client.new
       end
       original_sfdc_client

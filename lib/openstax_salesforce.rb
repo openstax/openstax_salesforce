@@ -7,6 +7,7 @@ require "openstax/salesforce/engine"
 require "openstax/salesforce/client"
 
 require "openstax/salesforce/remote/term_year"
+require "openstax/salesforce/remote/record_type"
 require "openstax/salesforce/remote/book"
 require "openstax/salesforce/remote/school"
 require "openstax/salesforce/remote/opportunity"
@@ -16,7 +17,6 @@ require "openstax/salesforce/remote/lead"
 require "openstax/salesforce/remote/campaign"
 require "openstax/salesforce/remote/campaign_member"
 require "openstax/salesforce/remote/account_contact_relation"
-require "openstax/salesforce/remote/record_type"
 
 module OpenStax
   module Salesforce

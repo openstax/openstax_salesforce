@@ -7,8 +7,8 @@ require "openstax/salesforce/version"
 Gem::Specification.new do |s|
   s.name        = "openstax_salesforce"
   s.version     = OpenStax::Salesforce::VERSION
-  s.authors     = ["JP Slavinsky", "Dante Soares"]
-  s.email       = ["jps@kindlinglabs.com"]
+  s.authors     = ["JP Slavinsky", "Dante Soares", "Michael Harrison"]
+  s.email       = ["mwharrison@rice.edu"]
   s.homepage    = "https://github.com/openstax/openstax_salesforce"
   s.summary     = "Interface gem for accessing OpenStax's Salesforce instance"
   s.description = "Interface gem for accessing OpenStax's Salesforce instance"

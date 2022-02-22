@@ -1,15 +1,22 @@
-module OpenStax::Salesforce::Remote
-  class AccountContactRelation < ActiveForce::SObject
-    belongs_to :school, foreign_key: :school_id,
-                        model: OpenStax::Salesforce::Remote::School
+# frozen_string_literal: true
 
-    belongs_to :contact, foreign_key: :contact_id,
-                         model: OpenStax::Salesforce::Remote::Contact
+module OpenStax
+  module Salesforce
+    module Remote
+      # School/Contact relation object from Salesforce
+      class AccountContactRelation < ActiveForce::SObject
+        belongs_to :school, foreign_key: :school_id,
+                            model: OpenStax::Salesforce::Remote::School
 
-    field :contact_id, from: 'ContactId'
-    field :primary, from: 'IsDirect', as: :boolean
-    field :school_id, from: 'AccountId'
+        belongs_to :contact, foreign_key: :contact_id,
+                             model: OpenStax::Salesforce::Remote::Contact
 
-    self.table_name = 'AccountContactRelation'
+        field :contact_id, from: 'ContactId'
+        field :primary, from: 'IsDirect', as: :boolean
+        field :school_id, from: 'AccountId'
+
+        self.table_name = 'AccountContactRelation'
+      end
+    end
   end
 end

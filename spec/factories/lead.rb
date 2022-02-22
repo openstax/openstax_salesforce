@@ -1,11 +1,11 @@
 FactoryBot.define do
   factory :lead, class: OpenStax::Salesforce::Remote::Lead do
-    id { Faker::Alphanumeric.alphanumeric(number: 10, min_alpha: 3, min_numeric: 3) }
+    skip_create
+
     name { Faker::Name.name }
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
     salutation { Faker::Name.suffix }
-    title { '' }
     subject { %i[biology chemistry psychology economics].sample }
     school { Faker::University.name }
     city { Faker::Address.city }

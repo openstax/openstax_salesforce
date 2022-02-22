@@ -72,36 +72,30 @@ module OpenStax::Salesforce::SpecHelpers
       @unique_token = nil
     end
 
-    def new_contact(first_name: nil, last_name: nil, school_name: "JP University",
-                    email: nil, email_alt: nil, faculty_verified: nil, school_type: nil)
+    def new_contact(first_name: nil, last_name: nil, school_name: "RSpec University",
+                    email: nil, faculty_verified: nil)
       ensure_schools_exist([school_name])
 
       Contact.new(
         first_name: first_name || Faker::Name.first_name,
-        last_name: last_name!(last_name),
+        last_name: last_name || Faker::Name.last_name,
         school_id: school_id(school_name),
-        email: email,
-        email_alt: email_alt,
-        faculty_verified: faculty_verified,
-        school_type: school_type
+        email: email || Faker::Internet.safe_email,
+        faculty_verified: faculty_verified
       ).tap do |contact|
-        unless contact.save
-          raise "Could not save SF contact: #{contact.errors}"
-        end
+        raise "Could not save SF contact: #{contact.errors}" unless contact.save
       end
     end
 
-    def new_lead(email:, status: nil, last_name: nil, source: nil, school_name: "JP University")
+    def new_lead(email:, status: nil, last_name: nil, source: nil)
       Lead.new(
         email: email,
         status: status,
         last_name: last_name!(last_name),
-        school: school_name,
+        school: 'RSpec University',
         source: source
       ).tap do |lead|
-        unless lead.save
-          raise "Could not save SF lead: #{lead.errors}"
-        end
+        raise "Could not save SF lead: #{lead.errors}" unless lead.save
       end
     end
 
@@ -109,9 +103,7 @@ module OpenStax::Salesforce::SpecHelpers
       Campaign.new(
         name: name
       ).tap do |campaign|
-        unless campaign.save
-          raise "Could not save SF Campaign: #{campaign.errors}"
-        end
+        raise "Could not save SF Campaign: #{campaign.errors}" unless campaign.save
       end
     end
 
@@ -120,9 +112,7 @@ module OpenStax::Salesforce::SpecHelpers
         contact_id: contact_id,
         campaign_id: campaign_id
       ).tap do |campaign_member|
-        unless campaign_member.save
-          raise "Could not save SF Campaign Member: #{campaign_member.errors}"
-        end
+        raise "Could not save SF Campaign Member: #{campaign_member.errors}" unless campaign_member.save
       end
     end
 
