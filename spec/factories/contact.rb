@@ -24,5 +24,6 @@ FactoryBot.define do
     grant_tutor_access { Faker::Boolean.boolean }
     accounts_uuid { Faker::Internet.uuid }
     lead_source { 'Account Creation' }
+    signup_date { DateTime.now }
   end
 end
