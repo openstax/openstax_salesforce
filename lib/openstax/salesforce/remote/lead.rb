@@ -47,6 +47,7 @@ module OpenStax
         field :title_1_school,      from: 'Title_1_school__c', as: :boolean
         field :sheerid_school_name, from: 'SheerID_School_Name__c'
         field :instant_conversion,  from: 'Instant_Conversion__c', as: :boolean
+        field :signup_date, from: 'Signup_Date__C'
 
         # These 2 fields both hold the Account (School) ID, but have different data types and uses in SF
         field :account_id,          from: 'Account_ID__c'

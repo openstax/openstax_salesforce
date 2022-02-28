@@ -30,6 +30,7 @@ FactoryBot.define do
     verification_status { %w[pending_faculty confirmed_faculty rejected_faculty].sample }
     position { %w[Student Instructor].sample }
     title { %w[Instructor Administrator Principle].sample }
+    signup_date { DateTime.now }
   end
 
   trait :without_validations do
