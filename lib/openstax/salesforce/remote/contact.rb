@@ -28,7 +28,7 @@ module OpenStax
         field :title_1_school,               from: 'Title_1_school__c', as: :boolean
         field :accounts_uuid,                from: 'Accounts_UUID__c'
         field :lead_source,                  from: 'LeadSource'
-        field :signup_date,          from: 'Signup_Date__C'
+        field :signup_date,                  from: 'Signup_Date__c', as: :datetime
 
         self.table_name = 'Contact'
       end
