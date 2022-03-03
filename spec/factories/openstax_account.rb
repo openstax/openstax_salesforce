@@ -7,7 +7,8 @@ FactoryBot.define do
 
     account_id { Faker::Number.positive }
     account_uuid { Faker::Internet.uuid }
-    role { Faker::Name.last_name }
+    account_role { %w[Unknown Instructor Student].sample }
     signup_date { DateTime.now }
+    account_environment { %w[production staging qa dev local].sample }
   end
 end
