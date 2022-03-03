@@ -8,7 +8,7 @@ module OpenStax
         belongs_to :contact, foreign_key: :salesforce_contact_id, model: OpenStax::Salesforce::Remote::Contact
         belongs_to :lead, foreign_key: :salesforce_lead_id, model: OpenStax::Salesforce::Remote::Lead
 
-        VALID_ROLE_NAME = %w[Unknown Instructor Student].freeze
+        VALID_ROLE_NAME = %w[Unknown Instructor Student Administrator Other].freeze
         VALID_ENV_NAME = %w[production staging qa dev local].freeze
 
         field :id, from: 'Id'
