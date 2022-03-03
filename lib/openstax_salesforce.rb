@@ -17,6 +17,7 @@ require "openstax/salesforce/remote/lead"
 require "openstax/salesforce/remote/campaign"
 require "openstax/salesforce/remote/campaign_member"
 require "openstax/salesforce/remote/account_contact_relation"
+require "openstax/salesforce/remote/openstax_account"
 
 module OpenStax
   module Salesforce
