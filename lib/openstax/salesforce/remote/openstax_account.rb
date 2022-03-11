@@ -25,7 +25,7 @@ module OpenStax
           allow_blank: false,
           inclusion: {
             in: VALID_ROLE_NAME,
-            message: "must be either #{VALID_ROLE_NAME.join(' or ')}"
+            message: "Role must be either #{VALID_ROLE_NAME.join(' or ')}"
           }
         )
 
@@ -34,7 +34,7 @@ module OpenStax
           allow_blank: false,
           inclusion: {
             in: VALID_ENV_NAME,
-            message: "must be either #{VALID_ENV_NAME.join(' or ')}"
+            message: "Environment must be either #{VALID_ENV_NAME.join(' or ')}"
           }
         )
 
