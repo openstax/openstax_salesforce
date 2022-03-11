@@ -10,6 +10,9 @@ module OpenStax
           pending_faculty
           confirmed_faculty
           rejected_faculty
+          pending_sheerid
+          rejected_by_sheerid
+          incomplete_signup
         ].freeze
 
         VALID_WHO_CHOOSES_BOOKS = %w[instructor committee coordinator].freeze
