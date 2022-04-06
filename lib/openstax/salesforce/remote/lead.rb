@@ -5,18 +5,6 @@ module OpenStax
     module Remote
       # Lead object from Salesforce
       class Lead < ActiveForce::SObject
-
-        VALID_VERIFICATION_STATUSES = %w[
-          pending_faculty
-          confirmed_faculty
-          rejected_faculty
-          pending_sheerid
-          rejected_by_sheerid
-          incomplete_signup
-        ].freeze
-
-        VALID_WHO_CHOOSES_BOOKS = %w[instructor committee coordinator].freeze
-
         field :id,                  from: 'Id'
         field :name,                from: 'Name'
         field :first_name,          from: 'FirstName'
@@ -58,23 +46,6 @@ module OpenStax
 
         validates(:last_name, presence: true)
         validates(:school, presence: true)
-        validates(
-          :verification_status,
-          allow_blank: true,
-          inclusion: {
-            in: VALID_VERIFICATION_STATUSES,
-            message: "must be either #{VALID_VERIFICATION_STATUSES.join(' or ')}"
-          }
-        )
-
-        validates(
-          :who_chooses_books,
-          allow_blank: true,
-          inclusion: {
-            in: VALID_WHO_CHOOSES_BOOKS,
-            message: "must be either #{VALID_WHO_CHOOSES_BOOKS.join(' or ')}"
-          }
-        )
 
         self.table_name = 'Lead'
 
