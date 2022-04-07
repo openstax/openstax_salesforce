@@ -12,6 +12,7 @@ module OpenStax
         field :account_id, from: 'Account_ID__c'
         field :account_uuid, from: 'Account_UUID__c'
         field :account_role, from: 'Account_Role__c'
+        field :faculty_status, from: 'Faculty_Status__c'
         field :salesforce_contact_id, from: 'Contact__c'
         field :salesforce_lead_id, from: 'Lead__c'
         field :signup_date, from: 'Signup_Date__c', as: :datetime
