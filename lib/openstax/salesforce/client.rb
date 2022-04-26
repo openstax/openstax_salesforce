@@ -1,3 +1,5 @@
+require 'salesforce_bulk_api'
+
 module OpenStax
   module Salesforce
     # OpenStax Salesforce Client connection for Salesforce, inherits from Restforce Client
@@ -16,6 +18,12 @@ module OpenStax
           api_version: configuration.api_version,
           host: configuration.login_domain
         )
+      end
+    end
+
+    class BulkApi < Client
+      def initialize
+        SalesforceBulkApi::Api.new(super)
       end
     end
   end

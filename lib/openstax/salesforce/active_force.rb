@@ -7,10 +7,13 @@ module ActiveForce
     # to allow the Client to be successfully instantiated.
     alias_method :original_sfdc_client, :sfdc_client
     def sfdc_client
-      unless original_sfdc_client.is_a?(OpenStax::Salesforce::Client)
+      if original_sfdc_client.is_a?(OpenStax::Salesforce::Client)
         self.sfdc_client = OpenStax::Salesforce::Client.new
+      elsif original_sfdc_client.is_a?(OpenStax::Salesforce::BulkApi)
+        self .sfdc_client = OpenStax::Salesforce::BulkApi.new
+      else
+        original_sfdc_client
       end
-      original_sfdc_client
     end
 
     def clear_sfdc_client!
