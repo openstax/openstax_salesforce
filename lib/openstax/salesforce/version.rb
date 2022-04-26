@@ -1,5 +1,5 @@
 module OpenStax
   module Salesforce
-    VERSION = '7.4.6'
+    VERSION = '8.0.0'.freeze
   end
 end

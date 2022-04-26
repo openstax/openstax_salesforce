@@ -1,23 +1,25 @@
-require "restforce"
-require "active_force"
+# frozen_string_literal: true
 
-require "openstax/salesforce/active_force"
+require 'restforce'
+require 'active_force'
 
-require "openstax/salesforce/engine"
-require "openstax/salesforce/client"
+require 'openstax/salesforce/active_force'
 
-require "openstax/salesforce/remote/term_year"
-require "openstax/salesforce/remote/record_type"
-require "openstax/salesforce/remote/book"
-require "openstax/salesforce/remote/school"
-require "openstax/salesforce/remote/opportunity"
-require "openstax/salesforce/remote/tutor_course_period"
-require "openstax/salesforce/remote/contact"
-require "openstax/salesforce/remote/lead"
-require "openstax/salesforce/remote/campaign"
-require "openstax/salesforce/remote/campaign_member"
-require "openstax/salesforce/remote/account_contact_relation"
-require "openstax/salesforce/remote/openstax_account"
+require 'openstax/salesforce/engine'
+require 'openstax/salesforce/client'
+
+require 'openstax/salesforce/remote/term_year'
+require 'openstax/salesforce/remote/record_type'
+require 'openstax/salesforce/remote/book'
+require 'openstax/salesforce/remote/school'
+require 'openstax/salesforce/remote/opportunity'
+require 'openstax/salesforce/remote/tutor_course_period'
+require 'openstax/salesforce/remote/contact'
+require 'openstax/salesforce/remote/lead'
+require 'openstax/salesforce/remote/campaign'
+require 'openstax/salesforce/remote/campaign_member'
+require 'openstax/salesforce/remote/account_contact_relation'
+require 'openstax/salesforce/remote/openstax_account'
 
 module OpenStax
   module Salesforce
@@ -43,11 +45,11 @@ module OpenStax
       end
 
       def validate!
-        raise(IllegalState, "The Salesforce username is missing") if username.nil?
-        raise(IllegalState, "The Salesforce password is missing") if password.nil?
-        raise(IllegalState, "The Salesforce security token is missing") if security_token.nil?
-        raise(IllegalState, "The Salesforce consumer key is missing") if consumer_key.nil?
-        raise(IllegalState, "The Salesforce consumer secret is missing") if consumer_secret.nil?
+        raise(IllegalState, 'The Salesforce username is missing') if username.nil?
+        raise(IllegalState, 'The Salesforce password is missing') if password.nil?
+        raise(IllegalState, 'The Salesforce security token is missing') if security_token.nil?
+        raise(IllegalState, 'The Salesforce consumer key is missing') if consumer_key.nil?
+        raise(IllegalState, 'The Salesforce consumer secret is missing') if consumer_secret.nil?
       end
     end
 

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
@@ -18,15 +18,18 @@ gemspec
 # To use a debugger
 gem 'byebug'
 
-rails_version = ENV["RAILS_VERSION"] || "default"
+# To facilitate using the bulk API for large data operations
+gem 'salesforce_bulk_api'
+
+rails_version = ENV['RAILS_VERSION'] || 'default'
 
 rails = case rails_version
-when "main"
-  {github: "rails/rails"}
-when "default"
-  ">= 5.2.4.3"
-else
-  "~> #{rails_version}"
+        when 'main'
+          { github: 'rails/rails' }
+        when 'default'
+          '>= 5.2.4.3'
+        else
+          "~> #{rails_version}"
 end
 
-gem "rails", rails
+gem 'rails', rails
