@@ -25,5 +25,6 @@ FactoryBot.define do
     accounts_uuid { Faker::Internet.uuid }
     lead_source { 'Account Creation' }
     signup_date { DateTime.now }
+    renewal_eligible { Faker::Boolean.boolean }
   end
 end
