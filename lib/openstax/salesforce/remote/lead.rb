@@ -12,6 +12,7 @@ module OpenStax
         field :salutation,          from: 'Salutation'
         field :title,               from: 'Title'
         field :subject,             from: 'Subject__c'
+        field :subject_interest,    from: 'Subject_Interest__c'
         field :school,              from: 'Company'
         field :city,                from: 'City'
         field :state,               from: 'State'
