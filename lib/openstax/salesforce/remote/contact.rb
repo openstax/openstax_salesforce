@@ -23,7 +23,6 @@ module OpenStax
         field :all_emails,                   from: 'All_Emails__c'
         field :adoption_status,              from: 'Adoption_Status__c'
         field :grant_tutor_access,           from: 'Grant_Tutor_Access__c', as: :boolean
-        field :b_r_i_marketing,              from: 'BRI_Marketing__c', as: :boolean # Bill of Rights Institute (book) marketing
         field :title_1_school,               from: 'Title_1_school__c', as: :boolean
         field :accounts_uuid,                from: 'Accounts_UUID__c'
         field :lead_source,                  from: 'LeadSource'
