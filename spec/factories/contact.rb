@@ -19,7 +19,6 @@ FactoryBot.define do
     end
     send_faculty_verification_to { Faker::Internet.safe_email }
     all_emails { Faker::Internet.safe_email }
-    confirmed_emails { Faker::Internet.safe_email }
     adoption_status { ['Confirmed Adoption Won', 'Confirmed Adoption Recommend', 'High Interest In Using', 'Not Using'].sample }
     grant_tutor_access { Faker::Boolean.boolean }
     accounts_uuid { Faker::Internet.uuid }
