@@ -44,10 +44,7 @@ module OpenStax
         # These 2 fields both hold the Account (School) ID, but have different data types and uses in SF
         field :account_id,          from: 'Account_ID__c'
         field :school_id,           from: 'School__c'
-
-        validates(:last_name, presence: true)
-        validates(:school, presence: true)
-
+        
         self.table_name = 'Lead'
 
       end
