@@ -20,7 +20,7 @@ module OpenStax
         self.table_name = 'Account'
 
         def self.query
-          super.where("RecordType.Name = 'School'")
+          super.where("RecordType.Name = 'School' OR RecordType.Name = 'School District'")
         end
       end
     end
