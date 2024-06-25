@@ -80,7 +80,7 @@ module OpenStax::Salesforce::SpecHelpers
         first_name: first_name || Faker::Name.first_name,
         last_name: last_name || Faker::Name.last_name,
         school_id: school_id(school_name),
-        email: email || Faker::Internet.safe_email,
+        email: email || Faker::Internet.email,
         faculty_verified: faculty_verified
       ).tap do |contact|
         raise "Could not save SF contact: #{contact.errors}" unless contact.save
