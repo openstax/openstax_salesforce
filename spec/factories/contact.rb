@@ -25,7 +25,7 @@ FactoryBot.define do
     lead_source { 'Account Creation' }
     signup_date { DateTime.now }
     renewal_eligible { Faker::Boolean.boolean }
-    assignable_interest { ['Fully Integrated'].sample }
+    assignable_interest { ['Interested', 'Fully Integrated'].sample }
     assignable_adoption_date { Faker::Date.backward }
   end
 end
