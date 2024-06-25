@@ -28,6 +28,8 @@ module OpenStax
         field :lead_source,                  from: 'LeadSource'
         field :signup_date,                  from: 'Signup_Date__c', as: :datetime
         field :renewal_eligible,             from: 'Renewal_Eligible__c', as: :boolean
+        field :assignable_interest,          from: 'Assignable_Interest__c'
+        field :assignable_adoption_date,     from: 'Assignable_Adoption_Date__c', as: :datetime
 
         self.table_name = 'Contact'
       end
