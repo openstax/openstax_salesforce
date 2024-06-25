@@ -2,7 +2,7 @@ namespace :openstax_salesforce do
   namespace :install do
     desc 'Copy initializers from openstax_salesforce to application'
     task :initializers do
-      Dir.glob(File.expand_path('../../../config/initializers/*.rb', __FILE__)) do |file|
+      Dir.glob(File.expand_path('../../config/initializers/*.rb', __dir__)) do |file|
         if File.exists?(File.expand_path(File.basename(file), 'config/initializers'))
           print "NOTE: Initializer #{File.basename(file)} from openstax_salesforce has been skipped. Initializer with the same name already exists.\n"
         else

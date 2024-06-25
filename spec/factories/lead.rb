@@ -15,7 +15,7 @@ FactoryBot.define do
     phone { Faker::PhoneNumber.cell_phone }
     website { Faker::Internet.url(host: 'example.com') }
     status { %w[Unqualified Converted Lost].sample }
-    email { Faker::Internet.safe_email }
+    email { Faker::Internet.email }
     source { %w[Account\ Signup Web Tutor\ Signup].sample }
     newsletter { Faker::Boolean.boolean }
     newsletter_opt_in { Faker::Boolean.boolean }
