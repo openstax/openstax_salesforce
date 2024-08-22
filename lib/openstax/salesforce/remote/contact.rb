@@ -17,6 +17,7 @@ module OpenStax
         field :faculty_confirmed_date,       from: 'Faculty_Confirmed_Date__c', as: :datetime
         field :faculty_verified,             from: 'FV_Status__c'
         field :last_modified_at,             from: 'LastModifiedDate'
+        field :last_modified_by,             from: 'LastModifiedById' # we will use this to filter out B2BMA user, Id: 0050B000008QCs1QAG
         field :school_id,                    from: 'AccountId'
         field :school_type,                  from: 'School_Type__c'
         field :send_faculty_verification_to, from: 'SendFacultyVerificationTo__c'
