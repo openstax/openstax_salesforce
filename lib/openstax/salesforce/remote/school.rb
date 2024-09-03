@@ -18,10 +18,6 @@ module OpenStax
         field :total_school_enrollment, from: 'Total_School_Enrollment__c', as: :integer
 
         self.table_name = 'Account'
-
-        def self.query
-          super.where("RecordType.Name = 'School' OR RecordType.Name = 'School District' OR RecordType.Name = 'General'")
-        end
       end
     end
   end
