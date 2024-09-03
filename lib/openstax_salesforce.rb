@@ -35,7 +35,7 @@ module OpenStax
       attr_accessor :username, :password, :security_token, :consumer_key, :consumer_secret
 
       def api_version
-        @api_version ||= '51.0'
+        @api_version ||= '61.0'
       end
 
       def login_domain
