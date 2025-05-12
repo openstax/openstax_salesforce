@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'openstax_active_force'
 
   s.add_development_dependency 'sqlite3', '< 2'
+  s.add_development_dependency 'concurrent-ruby', '1.3.4'
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'sprockets'
   s.add_development_dependency 'factory_bot_rails'
