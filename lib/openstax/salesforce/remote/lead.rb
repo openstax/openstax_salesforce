@@ -42,6 +42,7 @@ module OpenStax
         field :signup_date,         from: 'Signup_Date__c', as: :datetime
         field :self_reported_school, from: 'Self_Reported_School__c'
         field :tracking_parameters,  from: 'Tracking_Parameters__c'
+        field :expected_start_semester, from: 'Expected_Start_Semester__c'
 
         # These 2 fields both hold the Account (School) ID, but have different data types and uses in SF
         field :account_id,          from: 'Account_ID__c'
