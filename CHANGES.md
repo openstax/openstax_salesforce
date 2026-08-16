@@ -1,3 +1,14 @@
+## 8.4.0
+
+* Default to the OAuth client credentials flow. Salesforce retires the
+  username-password flow in Spring '27 (enforced Feb 20, 2027).
+* Apps that still set `username`/`password`/`security_token` keep the old flow, so
+  each one can migrate on its own schedule.
+* Client credentials requires the org's My Domain as the `login_domain`;
+  `validate!` now rejects `login.salesforce.com` and `test.salesforce.com`.
+
+(Entries below predate a long gap in this file.)
+
 ## 1.2.0
 
 * Added `first_arrived_my_courses_at` field to `CampaignMember`

@@ -38,12 +38,23 @@ After installation, the initializer for OpenStax::Salesforce will be located und
 `config/initializers/openstax_salesforce.rb`. Make sure to configure it to suit your needs.
 
 You will need the following information from Salesforce:
-  - Your username (append .sandboxname if using a sandbox)
-  - Your password
-  - Your security token
   - Connected App's client key
   - Connected App's client secret
+  - Your org's My Domain login domain (e.g. `openstax.my.salesforce.com`, or
+    `openstax--sandboxname.sandbox.my.salesforce.com` for a sandbox)
 Enter all the above information in the initializer, secrets.yml or environment variables.
+
+This uses the OAuth 2.0 client credentials flow. In Salesforce, the Connected App
+needs "Enable Client Credentials Flow" checked and a **Run As** user set under
+OAuth Policies — every object and field this gem touches must be readable and
+writable by that user. Requests to `login.salesforce.com` and `test.salesforce.com`
+are not supported by this flow, which is why the login domain must be My Domain.
+
+### Username-password flow (deprecated)
+
+Also setting `username`, `password` and `security_token` switches back to the OAuth
+username-password flow. Salesforce stops supporting it in Spring '27, so this exists
+only to let apps migrate one at a time. Leave the username unset for new setups.
 
 ## Testing
 
