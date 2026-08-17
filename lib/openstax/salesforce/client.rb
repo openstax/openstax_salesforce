@@ -7,14 +7,25 @@ module OpenStax
 
         configuration.validate!
 
+        # Restforce picks its auth middleware from whichever options are present, and
+        # a username/password pair wins over client credentials.
+        legacy_options =
+          if configuration.username_password_flow?
+            {
+              username: configuration.username,
+              password: configuration.password,
+              security_token: configuration.security_token
+            }
+          else
+            {}
+          end
+
         super(
-          username: configuration.username,
-          password: configuration.password,
-          security_token: configuration.security_token,
           client_id: configuration.consumer_key,
           client_secret: configuration.consumer_secret,
           api_version: configuration.api_version,
-          host: configuration.login_domain
+          host: configuration.login_domain,
+          **legacy_options
         )
       end
     end

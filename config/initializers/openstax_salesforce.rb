@@ -9,13 +9,18 @@ OpenStax::Salesforce.configure do |config|
     raise "Add a `salesforce` section to your Rails secrets!"
   end
 
-  # Username, client id, instance url and private key for connecting to the Salesforce app
-  config.username        = salesforce_secrets[:username]
-  config.password        = salesforce_secrets[:password]
-  config.security_token  = salesforce_secrets[:security_token]
+  # Connected App credentials for the OAuth client credentials flow. The login
+  # domain must be the org's My Domain; Salesforce rejects this flow at
+  # login.salesforce.com and test.salesforce.com.
   config.consumer_key    = salesforce_secrets[:consumer_key]
   config.consumer_secret = salesforce_secrets[:consumer_secret]
 
-  config.api_version  = salesforce_secrets.fetch :api_version, '37.0'
+  # Setting these switches back to the username-password flow, which Salesforce
+  # stops supporting in Spring '27. See the README.
+  config.username        = salesforce_secrets[:username]
+  config.password        = salesforce_secrets[:password]
+  config.security_token  = salesforce_secrets[:security_token]
+
+  config.api_version  = salesforce_secrets.fetch :api_version, '61.0'
   config.login_domain = salesforce_secrets.fetch :login_domain, 'test.salesforce.com'
 end

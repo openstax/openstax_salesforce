@@ -16,8 +16,12 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
-  s.add_dependency 'rails', '>= 5.0', '< 7.0'
-  s.add_dependency 'restforce'
+  # Restforce gained the client credentials auth middleware in 7.1, and that line
+  # of Restforce needs Ruby 3
+  s.required_ruby_version = '>= 3.0'
+
+  s.add_dependency 'rails', '>= 6.1'
+  s.add_dependency 'restforce', '>= 7.1'
   s.add_dependency 'openstax_active_force'
 
   s.add_development_dependency 'sqlite3', '< 2'
