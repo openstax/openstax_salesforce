@@ -61,7 +61,20 @@ module OpenStax
         if username_password_flow?
           raise(IllegalState, "The Salesforce password is missing") if password.nil?
           raise(IllegalState, "The Salesforce security token is missing") if security_token.nil?
-        elsif GENERIC_LOGIN_DOMAINS.include?(login_domain)
+          return
+        end
+
+        # Half-removed credentials would otherwise switch flows silently
+        unless password.nil? && security_token.nil?
+          raise(
+            IllegalState,
+            "The Salesforce password and security token only apply to the username-password " \
+            "flow. Remove them to use client credentials, or set a username to keep using " \
+            "the username-password flow."
+          )
+        end
+
+        if GENERIC_LOGIN_DOMAINS.include?(login_domain)
           raise(
             IllegalState,
             "The Salesforce client credentials flow requires the org's My Domain as the " \

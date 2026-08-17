@@ -5,8 +5,11 @@ RSpec.describe OpenStax::Salesforce::Client do
 
   around do |example|
     original = configuration.dup
-    example.run
-    OpenStax::Salesforce.instance_variable_set(:@configuration, original)
+    begin
+      example.run
+    ensure
+      OpenStax::Salesforce.instance_variable_set(:@configuration, original)
+    end
   end
 
   before do
@@ -16,7 +19,11 @@ RSpec.describe OpenStax::Salesforce::Client do
   end
 
   context "without a username" do
-    before { configuration.username = nil }
+    before do
+      configuration.username = nil
+      configuration.password = nil
+      configuration.security_token = nil
+    end
 
     it "uses the client credentials flow" do
       expect(described_class.new.authentication_middleware).to eq(
@@ -28,6 +35,18 @@ RSpec.describe OpenStax::Salesforce::Client do
       configuration.login_domain = 'test.salesforce.com'
 
       expect { described_class.new }.to raise_error(IllegalState, /My Domain/)
+    end
+
+    it "rejects a leftover password" do
+      configuration.password = 'password'
+
+      expect { described_class.new }.to raise_error(IllegalState, /only apply to the username-password/)
+    end
+
+    it "rejects a leftover security token" do
+      configuration.security_token = 'security_token'
+
+      expect { described_class.new }.to raise_error(IllegalState, /only apply to the username-password/)
     end
   end
 

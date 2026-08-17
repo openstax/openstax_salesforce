@@ -6,6 +6,8 @@
   the cutover reversible.
 * Client credentials requires the org's My Domain as the `login_domain`;
   `validate!` now rejects `login.salesforce.com` and `test.salesforce.com`.
+* `validate!` also rejects a `password`/`security_token` left set without a `username`,
+  so a half-removed config fails loudly instead of silently switching flows.
 * **Breaking:** requires Ruby >= 3.0, Rails >= 6.1 and Restforce >= 7.1. Restforce
   only gained the client credentials middleware in 7.1, and that line of Restforce
   dropped Ruby 2.7 — so the old flow is the only one that ever worked on Ruby 2.7.
