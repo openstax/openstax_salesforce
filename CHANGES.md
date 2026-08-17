@@ -1,11 +1,17 @@
-## 8.4.0
+## 9.0.0
 
 * Default to the OAuth client credentials flow. Salesforce retires the
   username-password flow in Spring '27 (enforced Feb 20, 2027).
-* Apps that still set `username`/`password`/`security_token` keep the old flow, so
-  each one can migrate on its own schedule.
+* Setting `username`/`password`/`security_token` still selects the old flow, to keep
+  the cutover reversible.
 * Client credentials requires the org's My Domain as the `login_domain`;
   `validate!` now rejects `login.salesforce.com` and `test.salesforce.com`.
+* **Breaking:** requires Ruby >= 3.0, Rails >= 6.1 and Restforce >= 7.1. Restforce
+  only gained the client credentials middleware in 7.1, and that line of Restforce
+  dropped Ruby 2.7 — so the old flow is the only one that ever worked on Ruby 2.7.
+  Stay on 8.3.0 there.
+* No longer caps `rails < 7.0`. Note `openstax_active_force` still does, so that gem
+  has to move before an app can actually reach Rails 7.
 
 (Entries below predate a long gap in this file.)
 
