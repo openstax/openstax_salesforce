@@ -1,12 +1,16 @@
 require 'rails_helper'
 
-# RSpec.describe OpenStax::Salesforce::Remote::Lead do
-#
-#   let(:lead) { FactoryBot.create :lead }
-#   it { is_expected.to be_valid }
-#
-# end
-
 RSpec.describe OpenStax::Salesforce::Remote::Lead do
-  pending "factorybot needs work with validations #{__FILE__}"
+  it 'exposes the conversion fields callers follow to the converted Contact' do
+    expect(described_class.mappings).to include(
+      is_converted: 'IsConverted',
+      converted_contact_id: 'ConvertedContactId'
+    )
+  end
+
+  it 'no longer maps the retired fields' do
+    expect(described_class.mappings.values).not_to include(
+      'BRI_Marketing__c', 'Title_1_school__c', 'Instant_Conversion__c', 'Subject__c', 'Newsletter__c'
+    )
+  end
 end

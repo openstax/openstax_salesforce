@@ -6,7 +6,6 @@ FactoryBot.define do
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
     salutation { Faker::Name.suffix }
-    subject { %i[biology chemistry psychology economics].sample }
     school { Faker::University.name }
     city { Faker::Address.city }
     state { Faker::Address.state }
@@ -17,7 +16,6 @@ FactoryBot.define do
     status { %w[Unqualified Converted Lost].sample }
     email { Faker::Internet.email }
     source { %w[Account\ Signup Web Tutor\ Signup].sample }
-    newsletter { Faker::Boolean.boolean }
     newsletter_opt_in { Faker::Boolean.boolean }
     adoption_status { %w[Confirmed Adoption Won Confirmed Adoption Recommend High Interest In Using Not Using].sample }
     adoption_json { '{}' }

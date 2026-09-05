@@ -1,3 +1,29 @@
+## 10.0.0
+
+* `Lead` gains `is_converted` (`IsConverted`) and `converted_contact_id`
+  (`ConvertedContactId`). Salesforce converts Account Creation leads into an
+  existing Contact when one matches by email or UUID, and this org allows updates
+  to converted leads, so a caller re-saving a stale lead id was writing onto a
+  converted lead instead of the Contact. Callers can now follow the conversion.
+* `Contact` gains the signup-profile fields a caller needs to finish that write on
+  the Contact: `phone`, `title`, `role`, `position`, `who_chooses_books`,
+  `subject_interest`, `expected_start_semester`, `adoption_json`, `num_students`,
+  `os_accounts_id`, `tracking_parameters` and `newsletter_opt_in`. Attribute names
+  match `Lead`'s so the same assignment code serves both. `FV_Status__c` stays
+  read-only in spirit: once a Contact exists that field is owned by Customer
+  Experience. `newsletter_opt_in` maps to `Newsletter_Opt_In__c`, which is the one
+  newsletter field going forward; `Newsletter_Opt_Out__c` is being retired and is
+  deliberately not mapped.
+* **Breaking:** removed five `Lead` fields. `b_r_i_marketing` (`BRI_Marketing__c`),
+  `title_1_school` (`Title_1_school__c`), `instant_conversion`
+  (`Instant_Conversion__c`) and `subject` (`Subject__c`) were dead: across ~16k
+  Account Creation leads in the 180 days to 2026-09-05 none had any of them set,
+  and no flow, formula, validation rule or list view in the org references them.
+  `newsletter` (`Newsletter__c`) duplicated `newsletter_opt_in`
+  (`Newsletter_Opt_In__c`), which is the one Salesforce automation reads; one
+  newsletter field is enough. `subject_interest` (`Subject_Interest__c`) is the
+  subject field in use.
+
 ## 9.0.0
 
 * Default to the OAuth client credentials flow. Salesforce retires the

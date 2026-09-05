@@ -22,5 +22,17 @@ FactoryBot.define do
     signup_date { DateTime.now }
     assignable_interest { ['Interested', 'Demo', 'Fully Integrated'].sample }
     assignable_adoption_date { Faker::Date.backward }
+    phone { Faker::PhoneNumber.cell_phone }
+    title { %w[Instructor Administrator].sample }
+    role { %w[Student Instructor].sample }
+    position { 'Instructor' }
+    who_chooses_books { %w[Instructor Coordinator Committee].sample }
+    subject_interest { 'Biology' }
+    expected_start_semester { 'Next semester' }
+    adoption_json { '{}' }
+    num_students { Faker::Number.between(from: 0, to: 300) }
+    os_accounts_id { Faker::Number.number(digits: 10) }
+    tracking_parameters { 'https://openstax.org/accounts/i/signup/' }
+    newsletter_opt_in { Faker::Boolean.boolean }
   end
 end

@@ -24,6 +24,18 @@ module OpenStax
         field :signup_date,                  from: 'Signup_Date__c', as: :datetime
         field :assignable_interest,          from: 'Assignable_Interest__c'
         field :assignable_adoption_date,     from: 'Assignable_Adoption_Date__c', as: :datetime
+        field :phone,                        from: 'Phone'
+        field :title,                        from: 'Title'
+        field :role,                         from: 'Role__c'
+        field :position,                     from: 'Position__c'
+        field :who_chooses_books,            from: 'who_chooses_books__c'
+        field :subject_interest,             from: 'Subject_Interest__c'
+        field :expected_start_semester,      from: 'Expected_Start_Semester__c'
+        field :adoption_json,                from: 'AdoptionsJSON__c'
+        field :num_students,                 from: 'Number_of_Students__c'
+        field :os_accounts_id,               from: 'Accounts_ID__c'
+        field :tracking_parameters,          from: 'Tracking_Parameters__c'
+        field :newsletter_opt_in,            from: 'Newsletter_Opt_In__c', as: :boolean
 
         self.table_name = 'Contact'
       end
