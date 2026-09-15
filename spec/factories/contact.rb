@@ -34,5 +34,6 @@ FactoryBot.define do
     os_accounts_id { Faker::Number.number(digits: 10) }
     tracking_parameters { 'https://openstax.org/accounts/i/signup/' }
     newsletter_opt_in { Faker::Boolean.boolean }
+    last_osweb_login_date { Faker::Date.backward(days: 365) }
   end
 end
