@@ -18,6 +18,7 @@ require "openstax/salesforce/remote/campaign"
 require "openstax/salesforce/remote/campaign_member"
 require "openstax/salesforce/remote/account_contact_relation"
 require "openstax/salesforce/remote/openstax_account"
+require "openstax/salesforce/remote/student"
 
 # openstax_utilities defines this too, but this gem doesn't depend on it
 class IllegalState < StandardError; end unless defined?(IllegalState)

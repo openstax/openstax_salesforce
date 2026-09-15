@@ -9,6 +9,7 @@ module OpenStax
         field :name, from: 'Name'
         field :official_name, from: 'Official_Name__c'
         field :annualization_number, from: 'Annualization_number__c', as: :decimal
+        field :osc_url, from: 'OSC_URL__c'
 
         self.table_name = 'Book__c'
 
