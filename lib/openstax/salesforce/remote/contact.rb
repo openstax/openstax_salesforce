@@ -36,7 +36,8 @@ module OpenStax
         field :os_accounts_id,               from: 'Accounts_ID__c'
         field :tracking_parameters,          from: 'Tracking_Parameters__c'
         field :newsletter_opt_in,            from: 'Newsletter_Opt_In__c', as: :boolean
-        field :last_osweb_login_date,        from: 'Last_OSweb_Login_Date__c', as: :date
+        field :last_account_login_date,      from: 'Last_Account_Login_Date__c', as: :date
+        field :last_website_visit,           from: 'Last_Website_Visit__c', as: :date
         field :self_reported_school,         from: 'Self_Reported_School__c'
 
         self.table_name = 'Contact'
