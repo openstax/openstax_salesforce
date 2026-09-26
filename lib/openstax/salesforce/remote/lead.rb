@@ -40,6 +40,7 @@ module OpenStax
         field :expected_start_semester, from: 'Expected_Start_Semester__c'
         field :is_converted,         from: 'IsConverted', as: :boolean
         field :converted_contact_id, from: 'ConvertedContactId'
+        field :last_account_login_date, from: 'Last_Account_Login_Date__c', as: :date
 
         # These 2 fields both hold the Account (School) ID, but have different data types and uses in SF
         field :account_id,          from: 'Account_ID__c'

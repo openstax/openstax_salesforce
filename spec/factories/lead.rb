@@ -29,6 +29,7 @@ FactoryBot.define do
     position { %w[Student Instructor].sample }
     title { %w[Instructor Administrator Principle].sample }
     signup_date { DateTime.now }
+    last_account_login_date { Faker::Date.backward(days: 365) }
   end
 
   trait :without_validations do
