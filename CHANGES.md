@@ -1,3 +1,11 @@
+## 11.1.0
+
+* `Lead` gains `last_account_login_date` (`Last_Account_Login_Date__c`, date), the
+  same attribute `Contact` and `Student` already carry, so a lead can show when
+  its user last signed in from the moment it is created rather than only after
+  conversion. Requires the field to exist on Lead and to be mapped to Contact's
+  field in Salesforce's lead conversion mapping.
+
 ## 10.0.0
 
 * `Lead` gains `is_converted` (`IsConverted`) and `converted_contact_id`
