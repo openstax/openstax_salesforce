@@ -20,6 +20,8 @@ module OpenStax
         field :all_emails,                   from: 'All_Emails__c'
         field :adoption_status,              from: 'Adoption_Status__c'
         field :accounts_uuid,                from: 'Accounts_UUID__c'
+        field :accounts_environment,         from: 'Accounts_Environment__c'
+        field :accounts_test_user,           from: 'Accounts_Test_User__c', as: :boolean
         field :lead_source,                  from: 'LeadSource'
         field :signup_date,                  from: 'Signup_Date__c', as: :datetime
         field :assignable_interest,          from: 'Assignable_Interest__c'

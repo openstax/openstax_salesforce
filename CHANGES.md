@@ -1,3 +1,12 @@
+## 11.2.0
+
+* `Lead` and `Contact` gain `accounts_environment` (`Accounts_Environment__c`,
+  text) and `accounts_test_user` (`Accounts_Test_User__c`, checkbox). Accounts'
+  staging environment writes to this same production org, so test Leads were
+  otherwise indistinguishable from real ones; Accounts now stamps every new
+  Lead with the environment that created it. Contact inherits both through
+  lead conversion.
+
 ## 11.1.0
 
 * `Lead` gains `last_account_login_date` (`Last_Account_Login_Date__c`, date), the
