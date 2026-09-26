@@ -28,6 +28,8 @@ module OpenStax
         field :num_students,        from: 'Number_of_Students__c'
         field :os_accounts_id,      from: 'Accounts_ID__c'
         field :accounts_uuid,       from: 'Accounts_UUID__c'
+        field :accounts_environment, from: 'Accounts_Environment__c'
+        field :accounts_test_user,  from: 'Accounts_Test_User__c', as: :boolean
         field :application_source,  from: 'Application_Source__c'
         field :role,                from: 'Role__c'
         field :position,            from: 'Position__c'

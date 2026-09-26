@@ -18,6 +18,8 @@ FactoryBot.define do
     all_emails { Faker::Internet.email }
     adoption_status { ['Confirmed Adoption Won', 'Confirmed Adoption Recommend', 'High Interest In Using', 'Not Using'].sample }
     accounts_uuid { Faker::Internet.uuid }
+    accounts_environment { %w[production staging dev].sample }
+    accounts_test_user { Faker::Boolean.boolean }
     lead_source { 'Account Creation' }
     signup_date { DateTime.now }
     assignable_interest { ['Interested', 'Demo', 'Fully Integrated'].sample }

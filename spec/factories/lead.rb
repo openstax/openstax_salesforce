@@ -22,6 +22,8 @@ FactoryBot.define do
     num_students  { Faker::Number.between(from: 0, to: 300) }
     os_accounts_id { Faker::Number.number(digits: 10) }
     accounts_uuid { Faker::Internet.uuid }
+    accounts_environment { %w[production staging dev].sample }
+    accounts_test_user { Faker::Boolean.boolean }
     application_source { %w[Tutor Signup OS Web Accounts Formsite SFAPI].sample }
     role { %w[Student Instructor].sample }
     who_chooses_books { %w[instructor committee coordinator].sample }
