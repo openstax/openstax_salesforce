@@ -39,6 +39,7 @@ module OpenStax
         field :last_account_login_date,      from: 'Last_Account_Login_Date__c', as: :date
         field :last_website_visit,           from: 'Last_Website_Visit__c', as: :date
         field :self_reported_school,         from: 'Self_Reported_School__c'
+        field :external_id,                  from: 'External_ID__c'
 
         self.table_name = 'Contact'
       end

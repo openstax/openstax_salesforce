@@ -15,6 +15,11 @@ RSpec.describe OpenStax::Salesforce::Remote::Contact do
     end
   end
 
+  it 'maps the external id under the same attribute name Student uses' do
+    expect(described_class.mappings).to include(external_id: 'External_ID__c')
+    expect(OpenStax::Salesforce::Remote::Student.mappings).to include(external_id: 'External_ID__c')
+  end
+
   it 'does not map the retiring Newsletter_Opt_Out__c' do
     expect(described_class.mappings.values).not_to include('Newsletter_Opt_Out__c')
   end
