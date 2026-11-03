@@ -37,5 +37,6 @@ FactoryBot.define do
     last_account_login_date { Faker::Date.backward(days: 365) }
     last_website_visit { Faker::Date.backward(days: 365) }
     self_reported_school { Faker::Educator.university }
+    external_id { SecureRandom.uuid }
   end
 end

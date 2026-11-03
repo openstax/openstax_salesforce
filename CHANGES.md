@@ -1,3 +1,10 @@
+## 11.2.0
+
+* `Student` and `Contact` gain `external_id` (`External_ID__c`, text), the id
+  another product uses for the Accounts user (today, the Assignable user id).
+  Same attribute name on both so one assignment serves either. Requires the field
+  to exist on Student__c and Contact.
+
 ## 11.1.0
 
 * `Lead` gains `last_account_login_date` (`Last_Account_Login_Date__c`, date), the
