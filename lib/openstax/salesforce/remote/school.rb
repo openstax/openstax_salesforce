@@ -17,6 +17,8 @@ module OpenStax
         field :is_child_of_kip,         from: 'child_of_kip__c', as: :boolean
         field :total_school_enrollment, from: 'Total_School_Enrollment__c', as: :integer
         field :has_assignable_contacts, from: 'Has_Assignable_Contacts__c', as: :boolean
+        field :assignable_integrated,           from: 'Assignable_Integrated__c',           as: :boolean
+        field :assignable_integration_possible, from: 'Assignable_Integration_Possible__c', as: :boolean
 
         self.table_name = 'Account'
       end

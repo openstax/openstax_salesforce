@@ -1,3 +1,15 @@
+## 11.3.0
+
+* `School` gains `assignable_integrated` (`Assignable_Integrated__c`, checkbox)
+  and `assignable_integration_possible` (`Assignable_Integration_Possible__c`,
+  checkbox formula). The first means the school's own LMS has a working
+  Assignable integration; the second means it has none of its own but its
+  district or system parent does. Salesforce never sets both on one Account.
+  Requires both fields to exist on Account **and to be readable by the
+  integration user**: ActiveForce selects every declared field on every
+  `School` query, so one unreadable field fails them all, including
+  `find_by(name: ...)`.
+
 ## 11.2.0
 
 * `Student` and `Contact` gain `external_id` (`External_ID__c`, text), the id

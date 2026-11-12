@@ -18,5 +18,7 @@ FactoryBot.define do
     is_kip { Faker::Boolean.boolean }
     is_child_of_kip { Faker::Boolean.boolean }
     total_school_enrollment { Faker::Number.between(from: 0, to: 5000)}
+    assignable_integrated { false }
+    assignable_integration_possible { false }
   end
 end
